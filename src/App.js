@@ -19,6 +19,12 @@ import sassStyles from './Second.module.scss'
 import lessStyles from './Third.module.less'
 import stylusStyles from './Fourth.module.styl'
 
+const Loader = () => (
+  <div className="Loader">
+    <Spinner />
+  </div>
+)
+
 class App extends Component {
   constructor() {
     super()
@@ -72,7 +78,7 @@ class App extends Component {
     console.log(data)
     if (!data.ready) {
       this.getStore()
-      return <Spinner />
+      return <Loader />
     } else {
       return (
         <BrowserRouter>
@@ -86,7 +92,9 @@ class App extends Component {
               />
             </Helmet>
             <Header />
-            {routes}
+            <div className="App">
+              {routes}
+            </div>
             <Footer />
           </div>
         </BrowserRouter>

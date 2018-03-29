@@ -43,7 +43,7 @@ export const getCMS = () => {
       AppStore.data.press = press
       AppStore.data.heroImages = heroImages
       AppStore.data.pages = {}
-      pages.forEach(page => (AppStore.data.pages[page.title] = page))
+      pages.forEach(page => AppStore.data.pages[page.title] = page)
       AppStore.data.ready = true
 
       AppStore.emitChange()

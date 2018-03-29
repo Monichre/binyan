@@ -1,16 +1,24 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import AppStore from '../../Flux/Store/AppStore'
+import Carousel from '../../Components/Carousel'
+
+import './home.scss'
 
 export default class Home extends Component {
-  constructor() {
-    super()
-
-    this.state = {}
+  constructor(props) {
+    super(props)
+    this.state = {
+    
+    }
   }
-  render () {
-    return(
-      <div>
-        Home
-      </div>
-    )
+
+  render() {
+    console.log(AppStore.data)
+    const { heroImages } = AppStore.data
+    console.log(heroImages)
+    
+    return (<div className="Home">
+          <Carousel slides={heroImages} />
+        </div>)
   }
 }
