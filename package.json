@@ -10,13 +10,16 @@
     "moment": "^2.21.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-helmet": "^5.2.0",
+    "react-markdown": "^3.3.0",
+    "react-router-dom": "^4.2.2",
+    "react-spinner": "^0.2.7"
   },
   "devDependencies": {
-    "custom-react-scripts": "0.2.2",
-    "@storybook/react": "^3.3.15",
     "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15"
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/react": "^3.3.15",
+    "custom-react-scripts": "0.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
