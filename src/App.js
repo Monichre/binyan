@@ -69,6 +69,7 @@ class App extends Component {
   render() {
     const { showLoader } = this.state
     const { data } = AppStore
+    console.log(data)
     if (!data.ready) {
       this.getStore()
       return <Spinner />
