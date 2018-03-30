@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Headroom from 'react-headroom'
 import AppStore from '../Flux/Store/AppStore'
 
 export default class Header extends Component {
@@ -10,9 +11,9 @@ export default class Header extends Component {
   render() {
     const { siteNav } = AppStore.data
     const Logo = (
-      <li className="logo">
-        <a href="/">
-          <img src="/img/logo1.jpg" />
+      <li className="logo_item">
+        <a href="/" className="logo">
+          <img src="/img/logo.png" />
         </a>
       </li>
     )
@@ -27,9 +28,9 @@ export default class Header extends Component {
     nav.splice(middle, 0, Logo)
 
     return (
-      <div className="Header">
+      <Headroom>
         <ul className="nav">{nav}</ul>
-      </div>
+      </Headroom>
     )
   }
 }

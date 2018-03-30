@@ -14,8 +14,8 @@ export const ProjectPreview = props => (
       <h2>{props.project.title}</h2>
       <ReactMarkdown source={props.project.shortDescription} />
       <footer>
-        <p>{props.project.architect}</p>
-        <p>{props.project.address}</p>
+        <p><span className="architect">Architect: </span>{props.project.architect}</p>
+        <p><span className="location">Location: </span>{props.project.address}</p>
       </footer>
     </div>
   </div>

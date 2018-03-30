@@ -63,17 +63,19 @@
       display: flex;
       justify-content: space-evenly;
 
-      .logo {
-        height: 75px;
-        margin-top: -20px;
+      .logo_item {
         flex-basis: 40%;
 
-        img {
-          object-fit: cover;
-          height: 100%;
-          display: block;
-          margin: auto;
-        }  
+        .logo {
+          height: 75px;
+          width: 200px;
+          img {
+            object-fit: cover;
+            height: 100%;
+            display: block;
+            margin: auto;
+          }  
+        }
       }
 
       li {

@@ -5,8 +5,12 @@
 
   .hero_image {
     max-height: 452px;
+    height: 100%;
+    padding: 20px;
+
     img {
-      object-fit: contain;
+      object-fit: cover;
+      max-height: 330px;
       height: 100%;
       width: 100%;
     }
@@ -20,14 +24,14 @@
   }
 
   footer {
-    display: flex;
-    justify-content: flex-start;
     margin-top: 30px;
 
     p {
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-right: 15px;
+      .architect, .location {
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin: 0;
+      }
     }
   }
 }
@@ -38,5 +42,6 @@
   width: 100%;
   .hero_image, .preview_content {
     width: 50%;
+    padding: 20px;
   }
 }

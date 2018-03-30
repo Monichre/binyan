@@ -17,7 +17,8 @@ export default class Home extends Component {
     const { heroImages, projects, pages } = AppStore.data
     const { companyTagline } = pages.Home
     console.log(heroImages)
-    const featuredProjects = _.filter(projects, project => project.featured)
+    // const featuredProjects = _.filter(projects, project => project.featured)
+    const featuredProjects = projects
     console.log(featuredProjects)
 
     return (
