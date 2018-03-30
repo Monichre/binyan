@@ -1,64 +1,66 @@
-
 /* ==========================================================================
    Binyan's custom styles
    ========================================================================== */
-    @import './scss/_variables.scss';
-    @import './scss/global.scss';
-  
-  
+@import './scss/_variables.scss';
+@import './scss/global.scss';
 
-   html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  $site-font: "futura-pt";
-  $site-font-bold: "futura-pt-bold";
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+$site-font: 'futura-pt';
+$site-font-bold: 'futura-pt-bold';
 
-  body {
-    font-family: $site-font;
-  }
-  h1, h2, h3 {
-    font-family: $site-font-bold;
-    line-height: normal;
-    letter-spacing: 2px;
-  }
-  h1 {
-    font-size: 5em;
-  }
-  h2 {
-    font-size: 3em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  p {
+body {
+  font-family: $site-font;
+}
+h1,
+h2,
+h3 {
+  font-family: $site-font-bold;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+h1 {
+  font-size: 5em;
+}
+h2 {
+  font-size: 3em;
+}
+h3 {
+  font-size: 1.5em;
+}
+p {
+}
+ul {
+  list-style: none;
+  padding: 0;
 
+  li {
+    display: inline-block;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      display: inline-block;
-    }
-  }
-  a {
-      color: inherit;
-      text-decoration: none; 
-  }
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 /* ==========================================================================
    Header
    ========================================================================== */
-  .Header {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    z-index: 2000;
-    height: auto;
+.headroom-wrapper {
+  position: absolute;
+  width: 100%;
 
-    
+  .headroom {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
     .nav {
       display: flex;
       justify-content: space-evenly;
@@ -67,53 +69,67 @@
         flex-basis: 40%;
 
         .logo {
-          height: 75px;
-          width: 200px;
+    
           img {
-            object-fit: cover;
-            height: 100%;
+        
             display: block;
             margin: auto;
-          }  
+          }
         }
       }
 
       li {
         color: #333;
         letter-spacing: 3px;
-        font-size: .8rem;
+        font-size: 0.8rem;
         padding-top: 10px;
         text-transform: uppercase;
 
         a {
-       
         }
       }
     }
   }
+  .headroom--unfixed {
+    position: relative;
+    transform: translateY(0);
+  }
+  .headroom--scrolled {
+    transition: transform 200ms ease-in-out, background-color 200ms;
+  }
+  .headroom--unpinned {
+    position: fixed;
+    transform: translateY(-100%);
+  }
+  .headroom--pinned {
+    position: fixed;
+    transform: translateY(0%);
+    background-color: rgba(255, 255, 255, .6);
+  }
+}
+
 /* ==========================================================================
    App
    ========================================================================== */
-  .App {
-    // padding-top: 50px;
-  }
-
+.App {
+  // padding-top: 50px;
+}
 
 /* ==========================================================================
    Carousel
    ========================================================================== */
 
-   .carousel {
-     .slide {
-       height: 80vh;
-       width: 100%;
-       background-color: #FAACA8;
-       background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
-       
-       img {
-         object-fit: contain;
-         height: 100%;
-         width: 100%;
-       }
-     }
-   }
+.carousel {
+  .slide {
+    height: 80vh;
+    width: 100%;
+    background-color: #faaca8;
+    background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
