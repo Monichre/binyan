@@ -1,6 +1,6 @@
 .about {
   position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 
   .team {
@@ -9,9 +9,8 @@
     width: 100%;
 
     .letters {
-      position: absolute;
-      top: 50px;
-      left: 0;
+      // position: absolute;
+      padding-top: 50px;
       height: auto;
       width: 100%;
       display: flex;

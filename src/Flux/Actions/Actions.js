@@ -11,8 +11,15 @@ export const getCMS = () => {
   CMS_CLIENT.getEntries()
     .then((response) => {
       const {items} = response
+      console.log(items)
 
       const pages = _.filter(items, (item) => item.sys.contentType.sys.id.includes('Page'))
+        .map((item) => item = { ...item.fields })
+
+      const socialMediaLinks = _.filter(items, (item) => item.sys.contentType.sys.id === 'socialMediaLink')
+        .map((item) => item = { ...item.fields })
+
+      const cities = _.filter(items, (item) => item.sys.contentType.sys.id === 'city')
         .map((item) => item = { ...item.fields })
       
       const nav = _.filter(pages, (page) => page.title !== 'Home')
@@ -31,6 +38,8 @@ export const getCMS = () => {
         .map((image) => image = {... image.fields})
 
       console.log(pages)
+      console.log(socialMediaLinks)
+      console.log(cities)
       console.log(nav)
       console.log(employees)
       console.log(projects)
@@ -39,6 +48,8 @@ export const getCMS = () => {
       
       AppStore.data.siteNav = nav
       AppStore.data.employees = employees
+      AppStore.data.socialMediaLinks = socialMediaLinks
+      AppStore.data.cities = cities
       AppStore.data.projects = projects
       AppStore.data.press = press
       AppStore.data.heroImages = heroImages
