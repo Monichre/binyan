@@ -41,11 +41,11 @@ export default class Team extends Component {
     for (let i = 0; i < alphaFull.length; i++) {
       setInterval(function() {
         characters.push(alphaFull[i])
-        _this.setState({
-          letters: characters
-        })
       }, 2000)
     }
+    this.setState({
+          letters: characters
+        })
 
     console.log(letters)
     console.log(employees)
