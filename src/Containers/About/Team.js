@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { CSSTransitionGroup } from 'react-transition-group'
+import _ from 'lodash'
 
 class Letters extends Component {
   render() {
@@ -11,9 +13,9 @@ class Letters extends Component {
 }
 
 const Letter = props => (
-  <div className={`letter ${props.animatedClass}`}>
-    <span className="letter_char">{props.letter}</span>
-  </div>
+    <div className={`letter ${props.animatedClass}`} key={props.key} onMouseEnter={props.hoverAnimation}>
+      <span className="letter_char" id={props.key} >{props.letter}</span>
+    </div>
 )
 
 export default class Team extends Component {
@@ -34,55 +36,109 @@ export default class Team extends Component {
     const { employees } = this.props
     const { alphaFull } = this
     const { letters } = this.state
-    const _this = this
-    const characters = []
-    console.log(alphaFull)
 
+    // this.renderLetters(alphaFull, letters)
+  }
+
+  handleHover = (e) => {
+    this.employeePhotoFilter(e.target)
+  }
+  employeePhotoFilter = (el) => {
+    const parent = el.parentElement
+    console.log(el)
+    const letter = el.innerText
+    const { employees } = this.props
+    const matchEmployee = _.find(employees, employee => {
+      console.log(employees)
+      console.log(employee.name.split('')[0])
+      if (employee.name.split('')[0] === letter) {
+        console.log(employee)
+        return employee
+      }
+    })
+    if(matchEmployee) {
+      const img = document.createElement('img')
+      img.src = matchEmployee.photo.fields.file.url
+      parent.appendChild(img)
+    }
+  }
+
+  renderLetters = (alphaFull, letters) => {
+    console.log(alphaFull)
+    const characters = []
     for (let i = 0; i < alphaFull.length; i++) {
-      setInterval(function() {
+      console.log(characters)
+      console.log(alphaFull[i])
+      setTimeout(function() {
         characters.push(alphaFull[i])
       }, 2000)
+      this.setState({
+        letters: characters
+      })
+      console.log(this.state)
     }
-    this.setState({
-          letters: characters
-        })
-
-    console.log(letters)
-    console.log(employees)
   }
 
   render() {
     const { employees } = this.props
     const { alphaFull } = this
     const { letters } = this.state
-    console.log(alphaFull)
     const characters = []
 
-    // setInterval(function(){
-    //   for(let i = 0; i < alphaFull.length; i ++) {
-    //     characters.push(alphaFull[i])
-    //   }
-    // }, 1000)
+    // const appendChars = () => {
+    //   const winHeight = window.outerHeight
+    //   const lContainer = document.querySelector('.team')
+    //   const containerHeight = lContainer ? lContainer.offsetHeight : null
+    //   console.log(lContainer)
+    //   console.log(containerHeight)
+    //   console.log(winHeight)
+    //   let lettersHTML = alphaFull.map((_letter, i) => {
+    //         console.log(_letter)
+    //         if (i % 2 === 0) {
+    //           return (
+    //             <Letter
+    //               key={`letter-${i}`}
+    //               letter={_letter}
+    //               hoverAnimation={this.handleHover}
+    //               animatedClass={'bounce animated'}
+    //             />
+    //           )
+    //         } else {
+    //           return (
+    //             <Letter
+    //               key={`letter-${i}`}
+    //               letter={_letter}
+    //               hoverAnimation={this.handleHover}
+    //               animatedClass={'bounce animated'}
+    //             />
+    //           )
+    //         }
+    //       })
+    // }
+    // console.log(appendChars())
 
-    // console.log(characters)
-    // console.log(employees)
+
 
     return (
       <div className="team">
         <Letters>
-          {letters.map((_letter, i) => {
+          {alphaFull.map((_letter, i) => {
             console.log(_letter)
             if (i % 2 === 0) {
               return (
                 <Letter
+                  key={`letter-${i}`}
                   letter={_letter}
+                  hoverAnimation={this.handleHover}
                   animatedClass={'bounce animated'}
                 />
               )
             } else {
               return (
                 <Letter
+                  key={`letter-${i}`}
                   letter={_letter}
+                  hoverAnimation={this.handleHover}
                   animatedClass={'bounce animated'}
                 />
               )

@@ -10,20 +10,39 @@
 
     .letters {
       // position: absolute;
-      padding-top: 50px;
-      height: auto;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
+      padding: 100px 50px 50px;
+      height: 100vh;
+      max-height: 100vh;
+      min-width: 2000px;
+      width: auto;
+      // display: flex;
+      // flex-wrap: wrap;
       // justify-content: space-evenly;
 
       .letter {
-        width: 10%;
+        width: 200px;
+        float: left;
         height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        position: relative;
+        padding: 10px;
+
+        img {
+          position: absolute;
+          z-index: -1;
+          padding: 10px;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          -o-object-position: center;
+          object-position: center;
+        }
 
         .letter_char {
           font-size: 7rem;

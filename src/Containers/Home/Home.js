@@ -2,14 +2,28 @@ import React, { Component } from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import Carousel from '../../Components/Carousel'
 import {ProjectPreview} from '../Projects/ProjectPreview'
+import Axe from 'axe-core'
 import ReactMarkdown from 'react-markdown'
 import _ from 'lodash'
+import {CONSTANTS} from '../../constants'
 import './home.scss'
+
+console.log(Axe)
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+  }
+  componentDidMount() {
+    Axe.run((err, results) => {
+      if (err) {
+        console.log(err)
+        throw err;
+      }
+      console.log(results)
+      // CONSTANTS.complianceReport(results)
+    })
   }
 
   render() {
