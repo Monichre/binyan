@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import { CSSTransitionGroup } from 'react-transition-group'
 import _ from 'lodash'
+import Letters from './letters'
 
-class Letters extends Component {
-  render() {
-    return (
-      <div className="letters" ref="elementContainer">
-        {this.props.children}
-      </div>
-    )
-  }
-}
+// class Letters extends Component {
+//   render() {
+//     return (
+//       <div className="letters" ref="elementContainer">
+//         {this.props.children}
+//       </div>
+//     )
+//   }
+// }
 
-const Letter = props => (
-    <div className={`letter ${props.animatedClass}`} key={props.key} onMouseEnter={props.hoverAnimation}>
-      <span className="letter_char" id={props.key} >{props.letter}</span>
-    </div>
-)
+// const Letter = props => (
+//     <div className={`letter ${props.animatedClass}`} key={props.key} onMouseEnter={props.hoverAnimation}>
+//       <span className="letter_char" id={props.key} >{props.letter}</span>
+//     </div>
+// )
 
 export default class Team extends Component {
   constructor() {
@@ -36,8 +37,11 @@ export default class Team extends Component {
     const { employees } = this.props
     const { alphaFull } = this
     const { letters } = this.state
+    const grid = document.querySelector('.letter-grid')
+    const letterAnim = new Letters(grid)
 
-    // this.renderLetters(alphaFull, letters)
+    letterAnim.init()
+    window.addEventListener('resize', _.debounce(letterAnim.onResize, 100))
   }
 
   handleHover = (e) => {
@@ -85,67 +89,37 @@ export default class Team extends Component {
     const { letters } = this.state
     const characters = []
 
-    // const appendChars = () => {
-    //   const winHeight = window.outerHeight
-    //   const lContainer = document.querySelector('.team')
-    //   const containerHeight = lContainer ? lContainer.offsetHeight : null
-    //   console.log(lContainer)
-    //   console.log(containerHeight)
-    //   console.log(winHeight)
-    //   let lettersHTML = alphaFull.map((_letter, i) => {
-    //         console.log(_letter)
-    //         if (i % 2 === 0) {
-    //           return (
-    //             <Letter
-    //               key={`letter-${i}`}
-    //               letter={_letter}
-    //               hoverAnimation={this.handleHover}
-    //               animatedClass={'bounce animated'}
-    //             />
-    //           )
-    //         } else {
-    //           return (
-    //             <Letter
-    //               key={`letter-${i}`}
-    //               letter={_letter}
-    //               hoverAnimation={this.handleHover}
-    //               animatedClass={'bounce animated'}
-    //             />
-    //           )
-    //         }
-    //       })
-    // }
-    // console.log(appendChars())
-
-
-
     return (
       <div className="team">
-        <Letters>
-          {alphaFull.map((_letter, i) => {
-            console.log(_letter)
-            if (i % 2 === 0) {
-              return (
-                <Letter
-                  key={`letter-${i}`}
-                  letter={_letter}
-                  hoverAnimation={this.handleHover}
-                  animatedClass={'bounce animated'}
-                />
-              )
-            } else {
-              return (
-                <Letter
-                  key={`letter-${i}`}
-                  letter={_letter}
-                  hoverAnimation={this.handleHover}
-                  animatedClass={'bounce animated'}
-                />
-              )
-            }
-          })}
-        </Letters>
+        <div className='letter-grid'>
+
+        </div>
       </div>
     )
   }
 }
+
+// <Letters>
+//           {alphaFull.map((_letter, i) => {
+//             console.log(_letter)
+//             if (i % 2 === 0) {
+//               return (
+//                 <Letter
+//                   key={`letter-${i}`}
+//                   letter={_letter}
+//                   hoverAnimation={this.handleHover}
+//                   animatedClass={'bounce animated'}
+//                 />
+//               )
+//             } else {
+//               return (
+//                 <Letter
+//                   key={`letter-${i}`}
+//                   letter={_letter}
+//                   hoverAnimation={this.handleHover}
+//                   animatedClass={'bounce animated'}
+//                 />
+//               )
+//             }
+//           })}
+//         </Letters>
