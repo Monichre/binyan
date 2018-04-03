@@ -1,17 +1,9 @@
 import React, { Component } from 'react'
 import { CSSTransitionGroup } from 'react-transition-group'
 import _ from 'lodash'
+import Swiper from 'react-id-swiper'
 import Letters from './letters'
 
-// class Letters extends Component {
-//   render() {
-//     return (
-//       <div className="letters" ref="elementContainer">
-//         {this.props.children}
-//       </div>
-//     )
-//   }
-// }
 
 // const Letter = props => (
 //     <div className={`letter ${props.animatedClass}`} key={props.key} onMouseEnter={props.hoverAnimation}>
@@ -25,29 +17,20 @@ export default class Team extends Component {
     this.state = {
       letters: []
     }
-    this.alpha = new Array(26)
-      .fill(1)
-      .map((_, i) => String.fromCharCode(65 + i))
-    this.alpha2 = new Array(26)
-      .fill(1)
-      .map((_, i) => String.fromCharCode(65 + i))
-    this.alphaFull = [...this.alpha, ...this.alpha2]
   }
   componentDidMount() {
-    const { employees } = this.props
-    const { alphaFull } = this
     const { letters } = this.state
     const grid = document.querySelector('.letter-grid')
     const letterAnim = new Letters(grid)
-
     letterAnim.init()
+
     window.addEventListener('resize', _.debounce(letterAnim.onResize, 100))
   }
 
-  handleHover = (e) => {
+  handleHover = e => {
     this.employeePhotoFilter(e.target)
   }
-  employeePhotoFilter = (el) => {
+  employeePhotoFilter = el => {
     const parent = el.parentElement
     console.log(el)
     const letter = el.innerText
@@ -60,7 +43,7 @@ export default class Team extends Component {
         return employee
       }
     })
-    if(matchEmployee) {
+    if (matchEmployee) {
       const img = document.createElement('img')
       img.src = matchEmployee.photo.fields.file.url
       parent.appendChild(img)
@@ -91,35 +74,8 @@ export default class Team extends Component {
 
     return (
       <div className="team">
-        <div className='letter-grid'>
-
-        </div>
+        <div className="letter-grid" />
       </div>
     )
   }
 }
-
-// <Letters>
-//           {alphaFull.map((_letter, i) => {
-//             console.log(_letter)
-//             if (i % 2 === 0) {
-//               return (
-//                 <Letter
-//                   key={`letter-${i}`}
-//                   letter={_letter}
-//                   hoverAnimation={this.handleHover}
-//                   animatedClass={'bounce animated'}
-//                 />
-//               )
-//             } else {
-//               return (
-//                 <Letter
-//                   key={`letter-${i}`}
-//                   letter={_letter}
-//                   hoverAnimation={this.handleHover}
-//                   animatedClass={'bounce animated'}
-//                 />
-//               )
-//             }
-//           })}
-//         </Letters>

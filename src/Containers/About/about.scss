@@ -2,23 +2,27 @@
   position: relative;
   height: 100%;
   width: 100%;
-
+  clear: both;
   .team {
     position: relative;
-    height: 100vh;
+    min-height: 900px;
     width: 100%;
+    clear: both;
 
     .letter-grid {
       height: 100%;
+      padding-top: 70px;
+      padding-left: 25px;
       left: 0;
       overflow: hidden;
       position: absolute;
       text-align: center;
+      clear: both;
       top: 0;
       width: 100%;
       z-index: -1;
 
-      span {
+      div {
         background-color: transparent;
         color: rgba(0, 0, 0, 0.25);
         display: block;
@@ -41,7 +45,7 @@
         }
 
         &:nth-child(5n + 1) {
-          color: orange;
+          color: black;
           font-weight: bold;
           transform: rotate(45deg);
         }
@@ -58,9 +62,12 @@
       }
     }
 
-    .js-show-letters span {
-      opacity: 1;
-      visibility: visible;
+    .letter-grid.js-show-letters {
+      div {
+        opacity: 1;
+        visibility: visible;
+      }
+   
     }
 
     // .letters {
