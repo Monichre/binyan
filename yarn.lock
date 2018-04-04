@@ -7348,6 +7348,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-absolute-grid@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-absolute-grid/-/react-absolute-grid-3.0.1.tgz#a97b8dded6083770215967e4cc277d1eca68dbc8"
+
 react-axe@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-axe/-/react-axe-3.0.0.tgz#7d79c26c51deae23e683bdaf802e4d74b1a58e57"

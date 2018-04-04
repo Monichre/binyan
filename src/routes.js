@@ -4,11 +4,10 @@ import AppStore from './Flux/Store/AppStore'
 import Home from './Containers/Home/Home'
 import About from './Containers/About/index'
 import Contact from './Containers/Contact/Contact'
-import Work from './Containers/Work/Work'
-import Press from './Containers/Press/Press'
-import PressItem from './Containers/Press/PressItem'
+import Gallery from './Containers/Gallery/Gallery'
 import Projects from './Containers/Projects/Projects'
 import Project from './Containers/Projects/Project'
+import Services from './Containers/Services/Services'
 
 const _routes = [
   {
@@ -27,19 +26,14 @@ const _routes = [
     component: Contact
   },
   {
-    path: '/work',
+    path: '/gallery',
     exact: true,
-    component: Work
+    component: Gallery
   },
   {
-    path: '/press',
+    path: '/services',
     exact: true,
-    component: Press
-  },
-  {
-    path: '/press/:pressItem',
-    exact: true,
-    component: PressItem
+    component: Services
   },
   {
     path: '/projects',

@@ -12,6 +12,7 @@
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
     "react": "^16.2.0",
+    "react-absolute-grid": "^3.0.1",
     "react-axe": "^3.0.0",
     "react-dom": "^16.2.0",
     "react-headroom": "^2.2.2",

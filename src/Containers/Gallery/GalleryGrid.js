@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-export default class Press extends Component {
+export default class GalleryGrid extends Component {
   constructor() {
     super()
 
@@ -9,7 +9,7 @@ export default class Press extends Component {
   render () {
     return(
       <div>
-        Press
+        GalleryGrid
       </div>
     )
   }

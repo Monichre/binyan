@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-export default class PressItem extends Component {
+export default class Services extends Component {
   constructor() {
     super()
 
@@ -9,7 +9,7 @@ export default class PressItem extends Component {
   render () {
     return(
       <div>
-        PressItem
+        Services
       </div>
     )
   }
