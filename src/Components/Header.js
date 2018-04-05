@@ -19,7 +19,7 @@ export default class Header extends Component {
     )
     let nav = siteNav.map((item, i) => (
       <li>
-        <Link key={`${item} + '-'${i}`} to={`${item}`}>
+        <Link key={`/${item} + '-'${i}`} to={`${item}`}>
           {item}
         </Link>
       </li>

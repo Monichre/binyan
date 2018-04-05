@@ -2,23 +2,12 @@ import React, { Component } from 'react'
 import AppDispatcher from '../../Flux/Dispatcher/AppDispatcher'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
-import createAbsoluteGrid from 'react-absolute-grid'
-import { ProjectGallery } from './ProjectGallery'
+import Gallery from 'react-photo-gallery'
 import './project.scss'
 
-const GridItem = props => {
+const Image = (props) => {
   console.log(props)
-  const itemStyle = {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-    padding: '30px'
-  }
-  return (
-    <div style={itemStyle} className="gridItem">
-      <img src={props.item.file.url} />
-    </div>
-  )
+  return <div className="grid_item"><img src={props.photo.src} /></div>
 }
 
 export default class Project extends Component {
@@ -43,14 +32,15 @@ export default class Project extends Component {
     const { data } = AppStore
     const { currentProject } = data
     const { intro, architect, address, images } = currentProject
-    const items = images.map((image, i) => {
-      let _image = { ...image.fields }
-      _image.key = i
-      _image.sort = i
-      _image.filtered = 0
+    const photoSet = images.map((image, i) => {
+      let _image = {
+        src: image.fields.file.url,
+        width: image.fields.file.details.image.width,
+        height: image.fields.file.details.image.height
+      }
       return _image
     })
-    const ProjectGalleryGrid = createAbsoluteGrid(GridItem)
+    console.log(photoSet)
     console.log(currentProject)
     
     return (
@@ -80,14 +70,10 @@ export default class Project extends Component {
             </ul>
           </div>
           <div className="project_photo_gallery">
-            <ProjectGalleryGrid
-              items={items}
-              dragEnabled={true}
-              zoom={1}
-              responsive={true}
-              verticalMargin={42}
-              itemWidth={450}
-              itemHeight={409}
+            <Gallery 
+              photos={photoSet} 
+              margin={4}
+              ImageComponent={(props) => <Image {...props} />}
             />
           </div>
         </div>

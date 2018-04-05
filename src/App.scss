@@ -76,6 +76,7 @@ h3 {
   font-size: 1.5em;
 }
 p {
+  @extend %font-variation-light;
 }
 ul {
   list-style: none;
@@ -267,11 +268,7 @@ $sub:#F98DB9;
       display: flex;
       margin: 0;
       
-      background-image:
-      linear-gradient(
-        to bottom, 
-        rgba(255,255,255, 0), rgba(255,255,255, 0.4), rgba(255,255,255, 0)
-      );
+     
       justify-content: space-evenly;
       padding: 20px 0;
 
@@ -302,6 +299,7 @@ $sub:#F98DB9;
   .headroom--unfixed {
     position: relative;
     transform: translateY(0);
+    background-color: rgba(255, 255, 255, .5);
   }
   .headroom--scrolled {
     transition: transform 200ms ease-in-out, background-color 200ms;

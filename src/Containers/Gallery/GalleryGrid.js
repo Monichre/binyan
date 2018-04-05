@@ -1,17 +1,5 @@
 import React, {Component} from 'react'
-import createAbsoluteGrid from 'AbsoluteGrid'
-
-class Grid extends Component {
-  render() {
-    return (
-      <div>
-        Grid
-      </div>
-    )
-  }
-}
-
-const AbsoluteGrid = createAbsoluteGrid(<Grid />, {...props})
+import Gallery from 'react-photo-gallery'
 
 export default class GalleryGrid extends Component {
   constructor() {
@@ -19,7 +7,17 @@ export default class GalleryGrid extends Component {
 
     this.state = {}
   }
+
   render () {
+    // const { intro, architect, address, images } = currentProject
+    // const photoSet = images.map((image, i) => {
+    //   let _image = {
+    //     src: image.fields.file.url,
+    //     width: i % 2 === 0 ? 4 : 3,
+    //     height: i % 2 === 0 ? 3 : 4
+    //   }
+    //   return _image
+    // })
     return(
       <div>
         GalleryGrid
