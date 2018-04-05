@@ -65,3 +65,15 @@ export const getCMS = () => {
     })
 }
 
+export const getProjectData = (slug) => {
+  console.log(slug)
+  const  { projects } = AppStore.data
+  console.log(projects)
+  const project = _.find(projects, (project) => project.slug === slug)
+  console.log(project)
+  if(project) {
+    AppStore.data.currentProject = project
+    AppStore.emitChange()
+  }
+}
+

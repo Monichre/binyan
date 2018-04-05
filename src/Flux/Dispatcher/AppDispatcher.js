@@ -1,15 +1,19 @@
 // AppDispatcher.js
 import { Dispatcher } from 'flux'
-import { getCMS } from '../Actions/Actions'
+import { getCMS, getProjectData } from '../Actions/Actions'
 
 const AppDispatcher = new Dispatcher()
 
 AppDispatcher.register(payload => {
-  let action = payload.action
+  let {action} = payload
 
   switch (action) {
     case 'get-cms-data':
       getCMS()
+      break
+
+    case 'get-project-data':
+      getProjectData(payload.projectSlug)
       break
 
     default:

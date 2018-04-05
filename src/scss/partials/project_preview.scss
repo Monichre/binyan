@@ -10,17 +10,21 @@
     padding: 40px;
     overflow: hidden;
 
-
-    img {
-      object-fit: cover;
-      // max-height: 330px;
+    a {
       height: 100%;
       width: 100%;
+
+      img {
+        object-fit: cover;
+        // max-height: 330px;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
   .preview_content {
-    padding: 20px;
-        display: flex;
+    padding: 20px 40px;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
