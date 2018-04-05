@@ -21,18 +21,18 @@ export default class Home extends Component {
         console.log(err)
         throw err;
       }
-      console.log(results)
+      
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
       // CONSTANTS.complianceReport(results)
     })
   }
 
   render() {
-    console.log(AppStore.data)
     const { heroImages, projects, pages } = AppStore.data
     const { companyTagline } = pages.Home
     console.log(heroImages)
-    // const featuredProjects = _.filter(projects, project => project.featured)
-    const featuredProjects = projects
+    const featuredProjects = _.filter(projects, project => project.featured)
     console.log(featuredProjects)
 
     return (

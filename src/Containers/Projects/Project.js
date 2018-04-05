@@ -8,18 +8,28 @@ import './project.scss'
 
 const GridItem = props => {
   console.log(props)
-  return <img src={props.item.fields.file.url} />
+  const itemStyle = {
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    padding: '30px'
+  }
+  return (
+    <div style={itemStyle} className="gridItem">
+      <img src={props.item.file.url} />
+    </div>
+  )
 }
 
 export default class Project extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
   componentWillMount() {
-    console.log(this.props)
     const { project } = this.props.match.params
     this.getProjectData(project)
+  }
+
+  componentDidMount() {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
 
   getProjectData = slug => {
@@ -32,11 +42,17 @@ export default class Project extends Component {
   render() {
     const { data } = AppStore
     const { currentProject } = data
-    console.log(currentProject)
     const { intro, architect, address, images } = currentProject
+    const items = images.map((image, i) => {
+      let _image = { ...image.fields }
+      _image.key = i
+      _image.sort = i
+      _image.filtered = 0
+      return _image
+    })
     const ProjectGalleryGrid = createAbsoluteGrid(GridItem)
-    console.log(ProjectGalleryGrid)
-
+    console.log(currentProject)
+    
     return (
       <div className="Project">
         <div className="featured_image">
@@ -64,7 +80,15 @@ export default class Project extends Component {
             </ul>
           </div>
           <div className="project_photo_gallery">
-            <ProjectGalleryGrid items={images} />
+            <ProjectGalleryGrid
+              items={items}
+              dragEnabled={true}
+              zoom={1}
+              responsive={true}
+              verticalMargin={42}
+              itemWidth={450}
+              itemHeight={409}
+            />
           </div>
         </div>
       </div>

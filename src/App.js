@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Spinner from 'react-spinner'
 import routes from './routes'
 import AppDispatcher from './Flux/Dispatcher/AppDispatcher'
 import AppStore from './Flux/Store/AppStore'
 import { Helmet } from 'react-helmet'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import {Loader} from './Components/Loader'
 
 //styles
 import './App.scss'
@@ -19,11 +19,7 @@ import sassStyles from './Second.module.scss'
 import lessStyles from './Third.module.less'
 import stylusStyles from './Fourth.module.styl'
 
-const Loader = () => (
-  <div className="Loader">
-    <Spinner />
-  </div>
-)
+
 
 class App extends Component {
   constructor() {

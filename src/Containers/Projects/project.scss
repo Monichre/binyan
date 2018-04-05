@@ -1,7 +1,7 @@
 
 
 .Project {
-  padding-top: 67px;
+  padding-top: 80px;
 
   .featured_image {
     width: 100%;
@@ -56,11 +56,16 @@
         height: 100%!important;
         position: relative;
         width: 100%!important;
-        div {
+
+        .gridItem {
           img {
-            
+            height: 100%;
+            width: 100%;
+            object-fit: none;
+            object-position: center;  
           }
         }
+        
       }
     }
   }
