@@ -8,7 +8,7 @@ export default class Contact extends Component {
   }
   render () {
     return(
-      <div>
+      <div className="still_building">
         Contact
       </div>
     )

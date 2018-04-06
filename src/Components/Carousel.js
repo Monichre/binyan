@@ -6,18 +6,24 @@ const Nav = props => (
   <nav id="carousel_navigation">
     <ul>
       {props.slides.map((slide, i) => {
-        <li key={`carousel_slide_${i}`}>
+        return (
+          <li key={`carousel_slide_${i}`}>
           <a href="" data-number={i}>
             <span className="dot" />
             <span className="label">Slide</span>
           </a>
         </li>
+        )
       })}
     </ul>
   </nav>
 )
 
 export default class Carousel extends Component {
+  constructor() {
+    super()
+    this.carousel = {}
+  }
   render() {
     const { slides } = this.props
     console.log(slides)
@@ -29,9 +35,8 @@ export default class Carousel extends Component {
           swipeOptions={{
             continuous: true,
             startSlide: 0,
-            speed: 400,
-            auto: 3000,
-            continuous: true
+            speed: 200,
+            auto: 3000
           }}>
           {slides.map((slide, i) => (
             <div className="slide" key={`hero_slide_${i}`}>
@@ -39,7 +44,7 @@ export default class Carousel extends Component {
             </div>
           ))}
         </ReactSwipe>
-        <Nav slides={slides} />
+        {/* <Nav slides={slides} /> */}
       </div>
     )
   }

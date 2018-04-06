@@ -8,7 +8,7 @@ export default class Services extends Component {
   }
   render () {
     return(
-      <div>
+      <div className="still_building">
         Services
       </div>
     )

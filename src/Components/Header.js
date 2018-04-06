@@ -13,13 +13,13 @@ export default class Header extends Component {
     const Logo = (
       <li className="logo_item">
         <a href="/" className="logo">
-          <img src="/img/logo.png" />
+          <img src="/img/logoWhite.png" />
         </a>
       </li>
     )
     let nav = siteNav.map((item, i) => (
       <li>
-        <Link key={`/${item} + '-'${i}`} to={`${item}`}>
+        <Link key={`${item} + '-'${i}`} to={`/${item}`}>
           {item}
         </Link>
       </li>
