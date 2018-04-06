@@ -1,26 +1,46 @@
 import React, { Component } from 'react'
 import ReactSwipe from 'react-swipe'
+import './carousel.scss'
+
+const Nav = props => (
+  <nav id="carousel_navigation">
+    <ul>
+      {props.slides.map((slide, i) => {
+        <li key={`carousel_slide_${i}`}>
+          <a href="" data-number={i}>
+            <span className="dot" />
+            <span className="label">Slide</span>
+          </a>
+        </li>
+      })}
+    </ul>
+  </nav>
+)
 
 export default class Carousel extends Component {
   render() {
     const { slides } = this.props
     console.log(slides)
+
     return (
-      <ReactSwipe
-        className="carousel"
-        swipeOptions={{
-          continuous: true,
-          startSlide: 0,
-          speed: 400,
-          auto: 3000,
-          continuous: true
-        }}>
-        {slides.map((slide, i) => (
-          <div className="slide" key={`hero_slide_${i}`}>
-            <img src={slide.image.fields.file.url} alt={slide.title} />
-          </div>
-        ))}
-      </ReactSwipe>
+      <div>
+        <ReactSwipe
+          className="carousel"
+          swipeOptions={{
+            continuous: true,
+            startSlide: 0,
+            speed: 400,
+            auto: 3000,
+            continuous: true
+          }}>
+          {slides.map((slide, i) => (
+            <div className="slide" key={`hero_slide_${i}`}>
+              <img src={slide.image.fields.file.url} alt={slide.title} />
+            </div>
+          ))}
+        </ReactSwipe>
+        <Nav slides={slides} />
+      </div>
     )
   }
 }

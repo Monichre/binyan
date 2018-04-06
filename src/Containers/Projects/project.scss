@@ -28,7 +28,11 @@
           width: 33.3333%;
           color: #cbcbcb;
           letter-spacing: 2px;
-          text-align: justify;
+          div {
+            p {
+              text-align: justify; 
+            }
+          }
           h4 {
             font-weight: bold;
             color: black;
