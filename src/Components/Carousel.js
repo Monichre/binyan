@@ -35,7 +35,7 @@ export default class Carousel extends Component {
           swipeOptions={{
             continuous: true,
             startSlide: 0,
-            speed: 200,
+            speed: 10,
             auto: 3000
           }}>
           {slides.map((slide, i) => (
