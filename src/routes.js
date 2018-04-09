@@ -31,7 +31,7 @@ const _routes = [
     component: Gallery
   },
   {
-    path: '/services',
+    path: '/disciplines',
     exact: true,
     component: Services
   },

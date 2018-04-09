@@ -61,6 +61,13 @@
           opacity: 1;
         }
       }
+      .gallery_video {
+        // height
+        video {
+          height: 100%!important;
+          width: 100%!important;
+        }
+      }
       img {
         height: 100%;
         width: 100%;

@@ -24,13 +24,19 @@
     }
   }
   .cities_content.content {
+    padding-bottom: 40px;
     div {
+      h2 {
+        text-transform: uppercase;
+      }
       ul:first-child {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
 
         li {
-          width: 50%;  
+          width: 40%;  
+          margin: 0 20px;
         }
       }
     }

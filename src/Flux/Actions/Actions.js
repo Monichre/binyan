@@ -44,7 +44,7 @@ export const getCMS = () => {
         } else if (page === 'Gallery') {
           sortedNav[1] = 'work'
         } else if (page === 'Services') {
-          sortedNav[2] = 'services'
+          sortedNav[2] = 'disciplines'
         } else if (page === 'Contact') {
           sortedNav[3] = 'contact'
         }
