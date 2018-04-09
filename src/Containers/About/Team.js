@@ -50,21 +50,6 @@ export default class Team extends Component {
     }
   }
 
-  renderLetters = (alphaFull, letters) => {
-    console.log(alphaFull)
-    const characters = []
-    for (let i = 0; i < alphaFull.length; i++) {
-      console.log(characters)
-      console.log(alphaFull[i])
-      setTimeout(function() {
-        characters.push(alphaFull[i])
-      }, 2000)
-      this.setState({
-        letters: characters
-      })
-      console.log(this.state)
-    }
-  }
 
   render() {
     const { employees } = this.props

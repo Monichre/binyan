@@ -162,11 +162,11 @@ export default class Project extends Component {
     })
     return (
       <div className="Project">
-        <div className="featured_image">
-          <img
+        <div className="featured_image" style={{backgroundImage: `url(${currentProject.featuredImage.fields.file.url})`}}>
+          {/* <img
             src={currentProject.featuredImage.fields.file.url}
             alt={`${currentProject.title} image `}
-          />
+          /> */}
         </div>
         <div className="project_inner">
           <div className="project_info">

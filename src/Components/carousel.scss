@@ -16,18 +16,22 @@
     // #cf2 img.transparent {
     // opacity:0;
     // }
+  
     .slide {
       height: 100vh;
-      width: 100%;
-      background-color: #faaca8;
-      background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+      width: 100vh;
+     
+      // background-color: #faaca8;
+      // background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
   
       img {
         object-fit: cover;
         object-fit: center;
         height: 100%;
         width: 100%;
+        // display: none;
       }
+
     }
   }
   
