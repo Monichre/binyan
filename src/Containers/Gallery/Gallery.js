@@ -41,6 +41,7 @@ export default class Gallery extends Component {
           className="gallery_video"
           url={file.fields.file.url}
           playing
+          loop={true}
           muted
           height="100%"
           width="100%"

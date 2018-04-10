@@ -20,10 +20,9 @@ export default class Home extends Component {
       if (err) {
         console.log(err)
         throw err;
-      }
-      
-      // document.body.scrollTop = 0
-      // document.documentElement.scrollTop = 0
+      }   
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
       // CONSTANTS.complianceReport(results)
     })
   }

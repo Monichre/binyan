@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Headroom from 'react-headroom'
 import AppStore from '../Flux/Store/AppStore'
 
 export default class Header extends Component {
@@ -28,9 +27,9 @@ export default class Header extends Component {
     nav.splice(middle, 0, Logo)
 
     return (
-      <Headroom>
+      <header className="header">
         <ul className="nav">{nav}</ul>
-      </Headroom>
+      </header>
     )
   }
 }

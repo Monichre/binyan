@@ -30,7 +30,6 @@ class App extends Component {
   }
   componentDidMount() {
     const _this = this
-
     AppStore.addChangeListener(this._onChange.bind(this))
     window.embedFunction = (w, d) => {
       var id = 'embedly-platform',
@@ -52,6 +51,13 @@ class App extends Component {
       }
     }
     window.embedFunction(window, document)
+    window.addEventListener('scroll', (e) => {
+      console.log(window.scrollY)
+      
+      if(window.scrollY > 80) {
+        document.querySelector('.header').classList.add('fixed')
+      }
+    })
   }
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange.bind(this))

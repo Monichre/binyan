@@ -41,6 +41,7 @@ export default class Carousel extends Component {
           {slides.map((slide, i) => (
             <div className="slide" key={`hero_slide_${i}`}>
               <img src={slide.image.fields.file.url} alt={slide.title} />
+              <div className="overlay" />
             </div>
           ))}
         </ReactSwipe>
