@@ -298,8 +298,10 @@ $sub:#F98DB9;
         margin: 0 15px;
         letter-spacing: 1px;
         text-transform: uppercase;
+        display: inline-block;
       }
       li.city {
+        display: inline-block;
         a {
           letter-spacing: 2px;
           font-size: .8rem;
@@ -310,6 +312,7 @@ $sub:#F98DB9;
     }
     ul.social {
       li {
+        display: inline-block;
         margin: 0 15px;
         i {
           color: #999999;
