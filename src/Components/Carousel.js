@@ -26,7 +26,8 @@ export default class Carousel extends Component {
   }
   render() {
     const { slides } = this.props
-    console.log(slides)
+    const winHeight = window.outerHeight
+    const winWidth = window.outerWidth
 
     return (
       <div>
@@ -40,7 +41,7 @@ export default class Carousel extends Component {
           }}>
           {slides.map((slide, i) => (
             <div className="slide" key={`hero_slide_${i}`}>
-              <img src={slide.image.fields.file.url} alt={slide.title} />
+              <img src={`${slide.image.fields.file.url}?w=${winWidth}&h=${winHeight}`} alt={slide.title} />
               <div className="overlay" />
             </div>
           ))}

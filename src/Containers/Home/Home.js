@@ -8,8 +8,6 @@ import _ from 'lodash'
 import {CONSTANTS} from '../../constants'
 import './home.scss'
 
-console.log(Axe)
-
 export default class Home extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +16,6 @@ export default class Home extends Component {
   componentDidMount() {
     Axe.run((err, results) => {
       if (err) {
-        console.log(err)
         throw err;
       }   
       document.body.scrollTop = 0
