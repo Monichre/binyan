@@ -7,7 +7,7 @@ export const ProjectPreview = props => (
     <div className="featured_image">
       <Link to={`/projects/${props.project.slug}`}>
         <img
-          src={props.project.featuredImage.fields.file.url + '?w=7000&h=7000'}
+          src={props.project.featuredImage.fields.file.url + '?fl=progressive&w=700&h=700'}
           alt={props.project.shortDescription}
         />
       </Link>

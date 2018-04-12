@@ -47,7 +47,7 @@ export default class Gallery extends Component {
           width="100%"
         />
       ) : (
-        <img src={file.fields.file.url + '?w=500&h=800'} alt={file.fields.title} />
+        <img src={file.fields.file.url + '?fl=progressive&w=500&h=800'} alt={file.fields.title} />
       )
     const shuffle = a => {
       let j
