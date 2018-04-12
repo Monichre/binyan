@@ -25,7 +25,7 @@ export default class Footer extends Component {
         <div className="footer_section">
           <ul>
             {cities.map((city) => (
-              <li><a href="">{city.name}</a></li>
+              <li className="city"><Link to="/contact">{city.name}</Link></li>
             ))}
           </ul>
         </div>
