@@ -13,24 +13,24 @@ export default class Gallery extends Component {
     this.state = {}
   }
   componentDidMount() {
-    const links = document.querySelectorAll('.nav li a')
-    const logo = document.querySelector('.nav .logo img')
-    logo.src = '/img/logo.png'
-    links.forEach(link => {
-      link.style.color = 'black'
-    })
+    // const links = document.querySelectorAll('.nav li a')
+    // const logo = document.querySelector('.nav .logo img')
+    // logo.src = '/img/logo.png'
+    // links.forEach(link => {
+    //   link.style.color = 'black'
+    // })
   }
   render() {
     const { galleryImages } = AppStore.data
     console.log(galleryImages)
     const getCityName = imageFile => {
-      if (imageFile.fields.description.includes('New York')) {
+      if (imageFile.fields.description && imageFile.fields.description.includes('New York')) {
         return <h5>New York</h5>
-      } else if (imageFile.fields.description.includes('Brisbane')) {
+      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Brisbane')) {
         return <h5>Brisbane</h5>
-      } else if (imageFile.fields.description.includes('Dubai')) {
+      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Dubai')) {
         return <h5>Dubai</h5>
-      } else if (imageFile.fields.description.includes('Sydney')) {
+      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Sydney')) {
         return <h5>Sydney</h5>
       }
     }
