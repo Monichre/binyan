@@ -263,39 +263,13 @@ $sub:#F98DB9;
     z-index: 1;
     height: 80px;
     width: 100%;
-
-    .nav {
-      display: flex;
-      margin: 0;
-      justify-content: space-evenly;
-      padding: 20px 0;
-
-      .logo_item {
-        flex-basis: 40%;
-
-        .logo {
-          img {
-            display: block;
-            margin: auto;
-          }
-        }
-      }
-
-      li {
-        color: white;
-        letter-spacing: 3px;
-        font-size: 0.8rem;
-        padding-top: 10px;
-        text-transform: uppercase;
-
-        a {
-          
-        }
-      }
-    }
   }
-  .header.fixed {
-    
+
+  .home_page_header.fixed {
+    background-color: rgba(0,0,0,0.6);
+  }
+  .general_header.fixed {
+    background-color: rgba(255,255,255, .6);
   }
 /* ==========================================================================
    Footer

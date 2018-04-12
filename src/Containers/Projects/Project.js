@@ -3,6 +3,7 @@ import AppDispatcher from '../../Flux/Dispatcher/AppDispatcher'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import Lightbox from 'react-images'
+import GeneralHeader from '../../Components/Header'
 import './project.scss'
 
 const theme = {

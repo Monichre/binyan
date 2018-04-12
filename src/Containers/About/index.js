@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import Team from './Team'
+import GeneralHeader from '../../Components/Header'
 import './about.scss'
 
 export default class About extends Component {
@@ -17,6 +18,7 @@ export default class About extends Component {
     console.log(employees)
     return(
       <div className="About">
+        <GeneralHeader />
          <div className="featured_image">
           <img
             src={About.featuredImage.fields.file.url}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import AppStore from '../../Flux/Store/AppStore'
+import { Link } from 'react-router-dom'
 import Carousel from '../../Components/Carousel'
-import {ProjectPreview} from '../Projects/ProjectPreview'
+import { ProjectPreview } from '../Projects/ProjectPreview'
 import Axe from 'axe-core'
 import ReactMarkdown from 'react-markdown'
 import _ from 'lodash'
@@ -25,14 +26,55 @@ export default class Home extends Component {
   }
 
   render() {
-    const { heroImages, projects, pages } = AppStore.data
+    const { heroImages, projects, pages, siteNav } = AppStore.data
     const { companyTagline } = pages.Home
-    console.log(heroImages)
     const featuredProjects = _.filter(projects, project => project.featured)
-    console.log(featuredProjects)
+    console.log(siteNav)
+    
+    const navStyles = {
+      display: ' flex',
+      margin: ' 0',
+      justifyContent: ' space-evenly',
+      padding: ' 20px 0'
+    }
+    const homePageLiStyle = {
+      color: ' white',
+      letterSpacing: ' 3px',
+      fontSize: ' 0.8rem',
+      paddingTop: ' 10px',
+      textTransform: ' uppercase'
+    }    
+    const HomePageLogo = (
+      <li className="logo_item" style={{ flexBasis: '40%' }}>
+        <a href="/" className="logo">
+          <img
+            src="/img/logoWhite.png"
+            style={{ display: 'block', margin: 'auto' }}
+          />
+        </a>
+      </li>
+    )
+    let HomeNav = siteNav.map((item, i) => (
+      <li style={homePageLiStyle}>
+        <Link key={`${item} + '-'${i}`} to={`/${item}`}>
+          {item}
+        </Link>
+      </li>
+    ))
+
+    const middle = Math.floor(siteNav.length / 2)
+    HomeNav.splice(middle, 0, HomePageLogo)
+    
+    const HomePageHeader = () => (
+      <header className="header home_page_header">
+        <ul style={navStyles} >{HomeNav}</ul>
+      </header>
+    )
+    
 
     return (
       <div className="Home">
+        <HomePageHeader />
         <Carousel slides={heroImages} />
         <section className="section">
           <ReactMarkdown source={companyTagline} className="company_tagline" />

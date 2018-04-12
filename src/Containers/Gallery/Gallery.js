@@ -3,6 +3,7 @@ import AppDispatcher from '../../Flux/Dispatcher/AppDispatcher'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import ReactPlayer from 'react-player'
+import GeneralHeader from '../../Components/Header'
 import './gallery.scss'
 
 export default class Gallery extends Component {
@@ -23,13 +24,13 @@ export default class Gallery extends Component {
     const { galleryImages } = AppStore.data
     console.log(galleryImages)
     const getCityName = imageFile => {
-      if (imageFile.fields.title.includes('New York')) {
+      if (imageFile.fields.description.includes('New York')) {
         return <h5>New York</h5>
-      } else if (imageFile.fields.title.includes('Brisbane')) {
+      } else if (imageFile.fields.description.includes('Brisbane')) {
         return <h5>Brisbane</h5>
-      } else if (imageFile.fields.title.includes('Dubai')) {
+      } else if (imageFile.fields.description.includes('Dubai')) {
         return <h5>Dubai</h5>
-      } else if (imageFile.fields.title.includes('Sydney')) {
+      } else if (imageFile.fields.description.includes('Sydney')) {
         return <h5>Sydney</h5>
       }
     }
@@ -64,6 +65,7 @@ export default class Gallery extends Component {
     const gallery = shuffle(galleryImages.images)
     return (
       <div className="Gallery">
+        <GeneralHeader />
         <nav className="gallery_menu">
           <ul>
             <li>All</li>

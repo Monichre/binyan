@@ -4,7 +4,6 @@ import routes from './routes'
 import AppDispatcher from './Flux/Dispatcher/AppDispatcher'
 import AppStore from './Flux/Store/AppStore'
 import { Helmet } from 'react-helmet'
-import Header from './Components/Header'
 import Footer from './Components/Footer'
 import {Loader} from './Components/Loader'
 
@@ -51,13 +50,7 @@ class App extends Component {
       }
     }
     window.embedFunction(window, document)
-    window.addEventListener('scroll', (e) => {
-      console.log(window.scrollY)
-      
-      if(window.scrollY > 80) {
-        document.querySelector('.header').classList.add('fixed')
-      }
-    })
+  
   }
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange.bind(this))
@@ -93,7 +86,6 @@ class App extends Component {
                 crossorigin="anonymous"
               />
             </Helmet>
-            <Header />
             <div className="App">
               {routes}
             </div>
