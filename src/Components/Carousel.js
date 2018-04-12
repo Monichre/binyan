@@ -9,7 +9,7 @@ const Nav = props => (
       {props.slides.map((slide, i) => {
         return (
           <li key={`carousel_slide_${i}`}>
-            <a href="" data-number={i}>
+            <a href="#" data-number={i} onClick={props.handleClick.bind(this, i)}>
               <span className="dot" />
               <span className="label">{slide.title}</span>
             </a>
@@ -23,16 +23,49 @@ const Nav = props => (
 export default class Carousel extends Component {
   constructor() {
     super()
-    this.state = { toggled: true }
+    this.state = {
+      activeSlides: [],
+      slides: []
+    }
   }
-  toggle = e => {
+  handleNavClick = (i, e) => {
+    console.log(i)
     console.log(e)
-    // e.preventDefault()
-    this.setState({ toggled: !this.state.toggled })
+    const newSlide = this.state.slides[i]
+    const newActiveSlides = [...this.state.activeSlides]
+    console.log(newSlide)
+    console.log(newActiveSlides)
+    newActiveSlides.push(newSlide)
+    this.setState({
+      activeSlides: newActiveSlides
+    })
+    
+  }
+  componentWillMount() {
+    const { slides } = this.props
+    this.setState({
+      slides: slides,
+      activeSlides: [slides[0]]
+    })
+  }
+  componentDidMount() {
+    // const { slides } = this.props
+    // const newSlides = []
+    // setTimeout(() => this.setState({ items: ['item1', 'item2', 'item3', 'item4'] }), 1000)
+    // // new item in between
+    // setTimeout(() => this.setState({ items: ['item1', 'item2', 'item5', 'item3', 'item4'] }), 2000)
+    // // deleted items
+    // setTimeout(() => this.setState({ items: ['item1', 'item3', 'item4'] }), 3000)
+    // // scrambled order
+    // setTimeout(() => this.setState({ items: ['item4', 'item2', 'item3', 'item1'] }), 4000)
   }
 
   render() {
     const { slides } = this.props
+    const { activeSlides } = this.state
+    console.log(slides)
+    console.log(activeSlides)
+    const defaultStyles = {position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center'}
     const winHeight = window.outerHeight
     const winWidth = window.outerWidth
     const heroImages = slides.map(slide => (
@@ -44,26 +77,23 @@ export default class Carousel extends Component {
         />
       </animated.div>
     ))
-
+    // zIndex:i,
+    // {position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center'}
     return (
       <div className="carousel">
+        <div className="overlay"/>
         <Transition
           native
-          keys={slides}
-          from={{ opacity: 0, height: 0 }}
-          enter={{ opacity: 1, height: 100 }}
-          leave={{ opacity: 0, height: 0 }}>
-          {slides.map((slide, i) => (i) => (
-            <animated.div>
-              <img
-              style={{position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex:i, objectFit: 'cover', objectPosition: 'center'}}
-                src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`}
-                alt={slide.title}
-              />
-            </animated.div>
+          keys={activeSlides}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: .3}}>
+          {activeSlides.map((slide, i) => (styles) => (
+            <animated.img  style={{ ...defaultStyles, ...styles }} src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`} alt={slide.title} />
+            
           ))}
         </Transition>
-        <Nav slides={slides} />
+        <Nav handleClick={this.handleNavClick} slides={slides} />
       </div>
     )
   }
