@@ -15,7 +15,9 @@ export default class Team extends Component {
   constructor() {
     super()
     this.state = {
-      letters: []
+      letters: [],
+      gridRow: 0,
+      gridHeight: 0
     }
   }
   componentDidMount() {
@@ -23,13 +25,48 @@ export default class Team extends Component {
     const grid = document.querySelector('.letter-grid')
     const letterAnim = new Letters(grid)
     letterAnim.init()
-
     window.addEventListener('resize', _.debounce(letterAnim.onResize, 100))
+    const lettersMounted = document.querySelectorAll('.letter-grid.js-show-letters')
+
+    if(lettersMounted) {
+      this.injectCityName()
+    }
+
   }
 
   handleHover = e => {
     this.employeePhotoFilter(e.target)
   }
+  getGridHeight = (letterAnim) => {
+    const gridHeight = letterAnim.getColumnHeight()
+    console.log(gridHeight)
+  }
+
+  getGridWidth = (letterAnim) => {
+    const gridLength = letterAnim.getRowLength()
+    console.log(gridLength)
+  }
+  
+
+  injectCityName = () => {
+    const allLetters =  document.querySelectorAll('.letter-grid.js-show-letters div')
+    console.log(allLetters)
+    const melbourne = 'Melbourne'.split('')
+    console.log(melbourne)
+    let i = 0
+    while(i < melbourne.length) {
+      allLetters[i + 6].innerText = melbourne[i]
+      allLetters[i + 6].classList.add('cityLetter')
+      i ++
+    }
+    // for(let i = 5; i < melbourne.length; i ++) {
+    //   for(let j = 0; j < melbourne.length; j ++) {
+    //     console.log(allLetters[i])
+        
+    //   }
+    // }
+  }
+
   employeePhotoFilter = el => {
     const parent = el.parentElement
     console.log(el)

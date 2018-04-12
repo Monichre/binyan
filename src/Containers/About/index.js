@@ -19,7 +19,7 @@ export default class About extends Component {
     return(
       <div className="About">
         <GeneralHeader />
-         <div className="featured_image">
+        <div className="featured_image">
           <img
             src={About.featuredImage.fields.file.url}
             alt={`About page featured photo, sky scraper buidling`}

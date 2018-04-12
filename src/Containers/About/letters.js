@@ -27,6 +27,11 @@ export default class Letters {
     )
   }
 
+  getRowLength = () => this.gridWidth / this.letterWidth
+
+  getColumnHeight = () => this.gridHeight / this.letterHeight
+  
+
   getTotalLetters = () => {
     const multiplierX = this.gridWidth / this.letterWidth
     const multiplierY = this.gridHeight / this.letterHeight

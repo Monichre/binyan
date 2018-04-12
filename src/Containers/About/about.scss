@@ -23,20 +23,49 @@
       line-height: 2;
     }
   }
+  h2 {
+    text-transform: uppercase;
+  }
+  .content div {
+    p {
+      color: gray;
+      font-size: 13px;
+    }
+  }
   .cities_content.content {
     padding-bottom: 40px;
     div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-left: 100px;
+
       h2 {
         text-transform: uppercase;
       }
-      ul:first-child {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
+      p {
+        color: black;
+      }
+      ul {
+        width: 50%;
         li {
-          width: 40%;  
-          margin: 0 20px;
+          // width: 50%;
+          margin: 10px;
+
+          ul {
+            display: block;
+            width: 100%;
+            li {
+              display: block;
+              margin: 10px;
+              strong {
+                font-weight: 900;
+              }
+            }
+          }
+          strong {
+            font-weight: 900;
+          }
         }
       }
     }
@@ -82,11 +111,11 @@
           cursor: default;
         }
 
-        &:nth-child(5n + 1) {
-          color: black;
-          font-weight: bold;
-          transform: rotate(45deg);
-        }
+        // &:nth-child(5n + 1) {
+        //   color: black;
+        //   font-weight: bold;
+        //   transform: rotate(45deg);
+        // }
 
         &:nth-child(10n + 1) {
           transform: rotate(-45deg);
@@ -104,6 +133,11 @@
       div {
         opacity: 1;
         visibility: visible;
+      }
+      .cityLetter {
+        color: black;
+        font-weight: bold;
+        
       }
    
     }

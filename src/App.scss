@@ -70,13 +70,16 @@ h1 {
   font-size: 5em;
 }
 h2 {
-  font-size: 3em;
+  margin-top: 50px auto 20px;
+  font-size: 2em;
 }
 h3 {
   font-size: 1.5em;
 }
 p {
   @extend %font-variation-light;
+  font-size: 13px;
+  color: gray;
 }
 ul {
   list-style: none;
@@ -268,6 +271,9 @@ $sub:#F98DB9;
   .home_page_header.fixed {
     background-color: rgba(0,0,0,0.6);
   }
+  .general_header {
+    background-color: white;
+  }
   .general_header.fixed {
     background-color: rgba(255,255,255, .6);
   }
@@ -296,7 +302,8 @@ $sub:#F98DB9;
       li.city {
         a {
           letter-spacing: 2px;
-          font-size: 1rem;
+          font-size: .8rem;
+          font-weight: 300;
         }
        
       }
