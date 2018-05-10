@@ -26,7 +26,7 @@ const _routes = [
     component: Contact
   },
   {
-    path: '/work',
+    path: '/gallery',
     exact: true,
     component: Gallery
   },

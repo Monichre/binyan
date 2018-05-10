@@ -5,7 +5,6 @@ import AppStore from '../Flux/Store/AppStore'
 export default class GeneralHeader extends Component {
   render() {
     const { siteNav } = AppStore.data
-    console.log(siteNav)
     const navStyles = {
       display: ' flex',
       margin: ' 0',

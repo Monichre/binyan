@@ -6,19 +6,7 @@ import AppStore from './Flux/Store/AppStore'
 import { Helmet } from 'react-helmet'
 import Footer from './Components/Footer'
 import {Loader} from './Components/Loader'
-
-//styles
 import './App.scss'
-import './App.less'
-import './App.styl'
-
-//modules
-import cssStyles from './First.module.css'
-import sassStyles from './Second.module.scss'
-import lessStyles from './Third.module.less'
-import stylusStyles from './Fourth.module.styl'
-
-
 
 class App extends Component {
   constructor() {
@@ -70,7 +58,6 @@ class App extends Component {
   render() {
     const { showLoader } = this.state
     const { data } = AppStore
-    console.log(data)
     if (!data.ready) {
       this.getStore()
       return <Loader />

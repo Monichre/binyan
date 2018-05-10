@@ -26,10 +26,8 @@ export default class Home extends Component {
   }
 
   render() {
-    const { heroImages, projects, pages, siteNav } = AppStore.data
+    const { heroImages, projects, pages, siteNav, featuredProjects } = AppStore.data
     const { companyTagline } = pages.Home
-    const featuredProjects = _.filter(projects, project => project.featured)
-    console.log(siteNav)
     
     const navStyles = {
       display: ' flex',

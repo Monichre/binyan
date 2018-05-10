@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AppDispatcher from '../../Flux/Dispatcher/AppDispatcher'
+import {Link} from 'react-router-dom'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import ReactPlayer from 'react-player'
@@ -9,38 +10,19 @@ import './gallery.scss'
 export default class Gallery extends Component {
   constructor() {
     super()
-
     this.state = {}
   }
-  componentDidMount() {
-    // const links = document.querySelectorAll('.nav li a')
-    // const logo = document.querySelector('.nav .logo img')
-    // logo.src = '/img/logo.png'
-    // links.forEach(link => {
-    //   link.style.color = 'black'
-    // })
-  }
-  render() {
-    const { galleryImages } = AppStore.data
-    console.log(galleryImages)
-    const getCityName = imageFile => {
-      if (imageFile.fields.description && imageFile.fields.description.includes('New York')) {
-        return <h5>New York</h5>
-      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Brisbane')) {
-        return <h5>Brisbane</h5>
-      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Dubai')) {
-        return <h5>Dubai</h5>
-      } else if (imageFile.fields.description &&  imageFile.fields.description.includes('Sydney')) {
-        return <h5>Sydney</h5>
-      }
-    }
 
-    const isVideoOrImage = file =>
-      file.fields.file.url.includes('mp4') ||
-      file.fields.file.url.includes('video') ? (
+  render() {
+    const { projects } = AppStore.data
+    console.log(projects)
+    
+    const isVideoOrImage = project =>
+      project.featuredImage.fields.file.url.includes('mp4') ||
+      project.featuredImage.fields.file.url.includes('video') ? (
         <ReactPlayer
           className="gallery_video"
-          url={file.fields.file.url}
+          url={project.featuredImage.fields.file.url}
           playing
           loop={true}
           muted
@@ -48,7 +30,7 @@ export default class Gallery extends Component {
           width="100%"
         />
       ) : (
-        <img src={file.fields.file.url + '?fl=progressive&w=500&h=800'} alt={file.fields.title} />
+        <img src={project.featuredImage.fields.file.url + '?fl=progressive&w=500&h=800'} alt={project.title + ' ' + project.architect} />
       )
     const shuffle = a => {
       let j
@@ -62,7 +44,8 @@ export default class Gallery extends Component {
       }
       return a
     }
-    const gallery = shuffle(galleryImages.images)
+    const gallery = shuffle(projects)
+
     return (
       <div className="Gallery">
         <GeneralHeader />
@@ -75,13 +58,13 @@ export default class Gallery extends Component {
           </ul>
         </nav>
         <div className="gallery_photo_gallery">
-          {gallery.map(image => (
+          {gallery.map(project => (
             <div className="grid_item">
-              {isVideoOrImage(image)}
+              {isVideoOrImage(project)}
               <div className="overlay">
                 <div className="text">
-                  <h4>{image.fields.title}</h4>
-                  {getCityName(image)}
+                  <h4>{project.title}</h4>
+                  <h4>{project.city}</h4>
                 </div>
               </div>
             </div>
