@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import AppStore from '../../Flux/Store/AppStore'
 import StepsForm from './form'
 import GeneralHeader from '../../components/header/Header'
+import FormTwo from './form2'
 import './_contact.scss'
 
 export default class Contact extends Component {
@@ -9,24 +11,36 @@ export default class Contact extends Component {
 
     this.state = {}
   }
-  componentDidMount() {
-    const theForm = document.getElementById('theForm')
-    new StepsForm(theForm, {
-      onSubmit: form => {
-        theForm.querySelector('.simform-inner').classList.add('hide')
-        let messageEl = theForm.querySelector('.final-message')
-        messageEl.innerHTML = "Thank you! We'll be in touch."
-        messageEl.classList.add('show')
-      }
-    })
-  }
+  // componentDidMount() {
+  //   const theForm = document.getElementById('theForm')
+  //   new StepsForm(theForm, {
+  //     onSubmit: form => {
+  //       theForm.querySelector('.simform-inner').classList.add('hide')
+  //       let messageEl = theForm.querySelector('.final-message')
+  //       messageEl.innerHTML = "Thank you! We'll be in touch."
+  //       messageEl.classList.add('show')
+  //     }
+  //   })
+  // }
   render() {
+		
+		const { Services } = AppStore.data.pages
     return (
       <div className="Contact">
         <GeneralHeader />
+				<div className="featured_image">
+          <img src={Services.featuredImage.fields.file.url} alt={`${Services.title} ${Services.pageHeader}`} />
+        </div>
         <div className="contact_inner">
-					<h2 style={{textAlign: 'center'}}>Get in Touch</h2>
-          <form id="theForm" className="simform" autocomplete="off">
+					<FormTwo />
+        </div>	
+      </div>
+    )
+  }
+}
+
+const FirstForm = () => (
+	<form id="theForm" className="simform" autocomplete="off">
             <div className="simform-inner">
               <ol className="questions">
                 <li>
@@ -81,8 +95,4 @@ export default class Contact extends Component {
             </div>
             <span className="final-message" />
           </form>
-        </div>
-      </div>
-    )
-  }
-}
+)
