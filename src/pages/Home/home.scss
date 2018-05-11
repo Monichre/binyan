@@ -1,5 +1,4 @@
 .Home {
-  
   .section {
     padding: 0 100px;
   }
@@ -13,3 +12,36 @@
     }
   }
 }
+
+.header.home_page_header.fixed {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 4px 0;
+  animation: slide-down 0.8s;
+  transition: all 0.4s;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  25% {
+    transform: translateY(-75%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  75% {
+    transform: translateY(-25%);
+  }
+  100% {
+    color: black !important;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+

@@ -53,12 +53,22 @@
           letter-spacing: 2px;
           font-family: 'futura-pt', sans-serif;
           font-style: normal;
-          font-weight: 300;
+          font-weight: 300!important;
           margin: auto; 
           text-align: center;     
         }
         &:hover {
           opacity: 1;
+        }
+
+        h4 {
+          font-size: 18px;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+        }
+        h5 {
+          font-size: 14px;
+          text-transform: capitalize;
         }
       }
       .gallery_video {

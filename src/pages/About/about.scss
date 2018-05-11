@@ -14,31 +14,30 @@
       object-position: center;
     }
   }
-  .content {
+  .main_content.content {
     width: 50%;
     display: block;
     margin: auto;
-
-    p {
-      line-height: 2;
+    div {
+      margin: 40px auto 0;
     }
-  }
-  h2 {
-    text-transform: uppercase;
-  }
-  .content div {
+    h2 {
+      text-transform: uppercase;
+    }
     p {
       color: gray;
       font-size: 13px;
+      line-height: 2;
     }
   }
+
   .cities_content.content {
     padding-bottom: 40px;
     div {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding-left: 100px;
+      padding: 50px 100px;
 
       h2 {
         text-transform: uppercase;
@@ -47,24 +46,17 @@
         color: black;
       }
       ul {
-        width: 50%;
+        // width: 50%;
         li {
-          // width: 50%;
           margin: 10px;
+          display: block;
 
-          ul {
+          li {
             display: block;
-            width: 100%;
-            li {
-              display: block;
-              margin: 10px;
-              strong {
-                font-weight: 900;
-              }
+            margin: 10px;
+            strong {
+              font-weight: 900;
             }
-          }
-          strong {
-            font-weight: 900;
           }
         }
       }
@@ -79,7 +71,7 @@
     .letter-grid {
       height: 100%;
       padding-top: 70px;
-      padding-left: 25px; 
+      padding-left: 25px;
       left: 0;
       overflow: hidden;
       position: absolute;
@@ -98,8 +90,7 @@
         opacity: 0;
         margin: 10px;
         text-transform: uppercase;
-        transition: background-color 0.75s, color 0.75s, opacity 0.75s,
-          transform 0.5s;
+        transition: background-color 0.75s, color 0.75s, opacity 0.75s, transform 0.5s;
         user-select: none;
         visibility: hidden;
         width: 50px;
@@ -137,9 +128,7 @@
       .cityLetter {
         color: black;
         font-weight: bold;
-        
       }
-   
     }
 
     // .letters {

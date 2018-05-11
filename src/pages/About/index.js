@@ -27,6 +27,7 @@ export default class About extends Component {
         </div>
         <div className="main_content content">
           <ReactMarkdown source={About.mainContent} />
+          <ReactMarkdown source={About.philosophy} />
         </div>
         <Team employees={employees} />
         <div className="cities_content content">

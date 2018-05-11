@@ -3,7 +3,6 @@ import AppStore from '../../Flux/Store/AppStore'
 import { Link } from 'react-router-dom'
 import Carousel from '../../components/carousel/Carousel'
 import { ProjectPreview } from '../Projects/ProjectPreview'
-import Axe from 'axe-core'
 import ReactMarkdown from 'react-markdown'
 import _ from 'lodash'
 import {CONSTANTS} from '../../constants'
@@ -14,9 +13,23 @@ export default class Home extends Component {
     super(props)
     this.state = {}
   }
+
   componentDidMount() {
+    this.fixScroll()
+  }
+
+  fixScroll = () => {
+    const hpHead = document.querySelector('.home_page_header')
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) {
+        hpHead.classList.add('fixed')
+      } else {
+        hpHead.classList.remove('fixed')
+      }
+    })
   }
 
   render() {

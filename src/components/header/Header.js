@@ -37,7 +37,7 @@ export default class GeneralHeader extends Component {
 
     let GeneralNav = siteNav.map((item, i) => splitSpan(item, i))
 
-    GeneralNav.splice(middle, 0, GeneralLogo)
+    GeneralNav.splice(middle(GeneralNav), 0, GeneralLogo)
 
     return (
       <header className="header general_header">

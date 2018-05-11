@@ -61,12 +61,12 @@ export default class Gallery extends Component {
           {gallery.map(project => (
             <div className="grid_item">
               {isVideoOrImage(project)}
-              <div className="overlay">
+              <a className="overlay" href={`/projects/${project.slug}`}>
                 <div className="text">
                   <h4>{project.title}</h4>
-                  <h4>{project.city}</h4>
+                  <h5>{project.city}</h5>
                 </div>
-              </div>
+              </a>
             </div>
           ))}
         </div>
