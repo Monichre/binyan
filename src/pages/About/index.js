@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import Team from './Team'
-import GeneralHeader from '../../Components/Header'
+import GeneralHeader from '../../components/header/Header'
 import './about.scss'
 
 export default class About extends Component {

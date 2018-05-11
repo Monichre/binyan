@@ -4,8 +4,8 @@ import routes from './routes'
 import AppDispatcher from './Flux/Dispatcher/AppDispatcher'
 import AppStore from './Flux/Store/AppStore'
 import { Helmet } from 'react-helmet'
-import Footer from './Components/Footer'
-import {Loader} from './Components/Loader'
+import Footer from './components/footer/Footer'
+import {Loader} from './components/loader/Loader'
 import './App.scss'
 
 class App extends Component {

@@ -14,13 +14,15 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background-color: rgba(0,0,0,0.1);
+      background-color: rgba(0,0,0,0.3);
     }
     
     .slide {
-     background-size: 100%;
-     background-position: center;
-     background-repeat: no-repeat;
+     img {
+       object-fit: cover;
+       height: 100%;
+       width: 100%;
+     }
     }
   }
   

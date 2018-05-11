@@ -55,7 +55,6 @@ export default class Carousel extends Component {
   
     return (
       <div className="carousel">
-        <div className="overlay"/>
         <Transition
           native
           keys={activeSlides}
@@ -64,7 +63,10 @@ export default class Carousel extends Component {
           leave={{ opacity: .3}}
           config={{ tension: 5, friction: 10 }}>
           {activeSlides.map((slide, i) => (styles) => (
-            <animated.div  className='slide' style={{ ...defaultStyles, ...styles, backgroundImage: `url(${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight})`}} />
+            <animated.div className='slide' style={{ ...defaultStyles, ...styles}}>
+              <img src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`} alt="" />
+              <div className="overlay"/>
+            </animated.div>
           ))}
         </Transition>
         <Nav handleClick={this.handleNavClick} slides={slides} />

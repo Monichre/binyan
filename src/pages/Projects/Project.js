@@ -3,16 +3,13 @@ import AppDispatcher from '../../Flux/Dispatcher/AppDispatcher'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import Lightbox from 'react-images'
-import GeneralHeader from '../../Components/Header'
+import GeneralHeader from '../../components/header/Header'
 import './project.scss'
 
 const theme = {
-	// container
 	container: {
 		background: 'rgba(255, 255, 255, 0.9)',
 	},
-
-	// arrows
 	arrow: {
 		backgroundColor: 'rgba(255, 255, 255, 0.8)',
 		fill: '#222',
@@ -43,16 +40,12 @@ const theme = {
 			opacity: 1,
 		},
 	},
-
-	// footer
 	footer: {
 		color: 'black',
 	},
 	footerCount: {
 		color: 'rgba(0, 0, 0, 0.6)',
 	},
-
-	// thumbnails
 	thumbnail: {
 	},
 	thumbnail__active: {

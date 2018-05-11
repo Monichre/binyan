@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import AppStore from '../Flux/Store/AppStore'
-import {CONSTANTS} from '../constants'
+import AppStore from '../../Flux/Store/AppStore'
+import {CONSTANTS} from '../../constants'
+import './_footer.scss'
 
 export default class Footer extends Component {
   constructor() {

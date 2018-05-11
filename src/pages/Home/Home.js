@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import { Link } from 'react-router-dom'
-import Carousel from '../../Components/Carousel'
+import Carousel from '../../components/carousel/Carousel'
 import { ProjectPreview } from '../Projects/ProjectPreview'
 import Axe from 'axe-core'
 import ReactMarkdown from 'react-markdown'
@@ -15,14 +15,8 @@ export default class Home extends Component {
     this.state = {}
   }
   componentDidMount() {
-    Axe.run((err, results) => {
-      if (err) {
-        throw err;
-      }   
-      document.body.scrollTop = 0
-      document.documentElement.scrollTop = 0
-      // CONSTANTS.complianceReport(results)
-    })
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
 
   render() {

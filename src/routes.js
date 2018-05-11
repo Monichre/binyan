@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import AppStore from './Flux/Store/AppStore'
-import Home from './Containers/Home/Home'
-import About from './Containers/About/index'
-import Contact from './Containers/Contact/Contact'
-import Gallery from './Containers/Gallery/Gallery'
-import Projects from './Containers/Projects/Projects'
-import Project from './Containers/Projects/Project'
-import Services from './Containers/Services/Services'
+import Home from './pages/Home/Home'
+import About from './pages/About/index'
+import Contact from './pages/Contact/Contact'
+import Gallery from './pages/Gallery/Gallery'
+import Projects from './pages/Projects/Projects'
+import Project from './pages/Projects/Project'
+import Services from './pages/services/index'
 
 const _routes = [
   {

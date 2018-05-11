@@ -1,0 +1,45 @@
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+   .Footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 20px;
+  
+    .footer_section {
+      .copyright {
+        color: #999999;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
+      ul {
+        li {
+          margin: 0 15px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          display: inline-block;
+        }
+        li.city {
+          display: inline-block;
+          a {
+            letter-spacing: 2px;
+            font-size: .8rem;
+            font-weight: 300;
+          }
+         
+        }
+      }
+      ul.social {
+        li {
+          display: inline-block;
+          margin: 0 15px;
+          i {
+            color: #999999;
+          }
+        }
+      }
+    }
+  }

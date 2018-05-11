@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import ReactPlayer from 'react-player'
-import GeneralHeader from '../../Components/Header'
+import GeneralHeader from '../../components/header/Header'
 import './gallery.scss'
 
 export default class Gallery extends Component {
