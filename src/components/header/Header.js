@@ -9,8 +9,8 @@ export default class GeneralHeader extends Component {
     const navStyles = {
       display: ' flex',
       margin: ' 0',
-      justifyContent: ' space-evenly',
-      padding: ' 20px 0 20px 20px'
+      justifyContent: ' space-around',
+      padding: ' 30px 20px 20px 20px'
     }
  
     const GeneralLogo = (
