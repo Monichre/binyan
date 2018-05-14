@@ -5,9 +5,9 @@ import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
 import ReactPlayer from 'react-player'
 import GeneralHeader from '../../components/header/Header'
-import './gallery.scss'
+import './_gallery2.scss'
 
-export default class Gallery extends Component {
+export default class Gallery2 extends Component {
   constructor() {
     super()
     this.state = {}
@@ -47,7 +47,7 @@ export default class Gallery extends Component {
     const gallery = shuffle(projects)
 
     return (
-      <div className="Gallery">
+      <div className="Gallery2">
         <GeneralHeader />
         <nav className="gallery_menu">
           <ul>
@@ -55,7 +55,6 @@ export default class Gallery extends Component {
             <li>Still</li>
             <li>Video</li>
             <li>VR</li>
-            <li><Link to='/gallery2'>Gallery Two</Link></li>
           </ul>
         </nav>
         <div className="gallery_photo_gallery">

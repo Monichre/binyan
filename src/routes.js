@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import About from './pages/About/index'
 import Contact from './pages/Contact/index'
 import Gallery from './pages/Gallery/Gallery'
+import Gallery2 from './pages/Gallery/gallery2'
 import Projects from './pages/Projects/Projects'
 import Project from './pages/Projects/Project'
 import Services from './pages/services/index'
@@ -29,6 +30,11 @@ const _routes = [
     path: '/gallery',
     exact: true,
     component: Gallery
+  },
+  {
+    path: '/gallery2',
+    exact: true,
+    component: Gallery2
   },
   {
     path: '/disciplines',
