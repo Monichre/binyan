@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactSwipe from 'react-swipe'
 import { Transition, animated } from 'react-spring'
+import { SectionsContainer, Section } from 'react-fullpage'
 import './carousel.scss'
 
 const Nav = props => (
@@ -9,7 +10,7 @@ const Nav = props => (
       {props.slides.map((slide, i) => {
         return (
           <li key={`carousel_slide_${i}`}>
-            <a href="#" data-number={i} onClick={props.handleClick.bind(this, i)}>
+            <a href={`#slide${i}`} data-number={i} onClick={props.handleClick.bind(this, i)}>
               <span className="dot" />
               <span className="label">{slide.title}</span>
             </a>
@@ -24,54 +25,66 @@ export default class Carousel extends Component {
   constructor() {
     super()
     this.state = {
-      activeSlides: [],
-      slides: []
+      current: 0,
     }
   }
   handleNavClick = (i, e) => {
+    e.preventDefault()
+    this.setState({current: i})
 
-    const newSlide = this.state.slides[i]
-    const newActiveSlides = [...this.state.activeSlides]
-    newActiveSlides.push(newSlide)
-    this.setState({
-      activeSlides: newActiveSlides
-    })
-    
   }
   componentWillMount() {
-    const { slides } = this.props
-    this.setState({
-      slides: slides,
-      activeSlides: [slides[0]]
-    })
+
   }
 
   render() {
     const { slides } = this.props
-    const { activeSlides } = this.state
-    const defaultStyles = {position: 'absolute', top: 0, left: 0, height: '100%', width: '100%'}
+    const {current} = this.state
     const winHeight = window.outerHeight
     const winWidth = window.outerWidth
-  
+    const anchors = slides.map((slide, i) => `slide${i}`)
+    console.log(slides)
+
+    let options = {
+      scrollBar: false,
+      anchors: anchors,
+      navigation: false,
+      verticalAlign: false,
+      sectionPaddingTop: '0',
+      sectionPaddingBottom: '0',
+      fadingEffect: true,
+      autScrolling: true,
+      arrowNavigation: false,
+      scrollCallback: (states) => this.setState({current: states.activeSection})
+    }
+
     return (
       <div className="carousel">
-        <Transition
-          native
-          keys={activeSlides}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: .3}}
-          config={{ tension: 5, friction: 10 }}>
-          {activeSlides.map((slide, i) => (styles) => (
-            <animated.div className='slide' style={{ ...defaultStyles, ...styles}}>
-              <img src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`} alt="" />
-              <div className="overlay"/>
-            </animated.div>
+        <SectionsContainer className="slider" {...options} activeSection={current}>
+          {slides.map((slide, i) => (
+            <Section className={`hero_slide ${current === i ? 'active' : ''}`}>
+              <img src={slide.image.fields.file.url} alt="" />
+            </Section>
           ))}
-        </Transition>
+        </SectionsContainer>
         <Nav handleClick={this.handleNavClick} slides={slides} />
       </div>
     )
   }
 }
 
+// <Transition
+// native
+// keys={activeSlides}
+// from={{ opacity: 0 }}
+// enter={{ opacity: 1 }}
+// leave={{ opacity: .3}}
+// config={{ tension: 5, friction: 10 }}>
+// {activeSlides.map((slide, i) => (styles) => (
+//   <animated.div className='slide' style={{ ...defaultStyles, ...styles}}>
+//     <img src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`} alt="" />
+//     <div className="overlay"/>
+//   </animated.div>
+// ))}
+// </Transition>
+// const defaultStyles = {position: 'absolute', top: 0, left: 0, height: '100%', width: '100%'}
