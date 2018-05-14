@@ -82,7 +82,7 @@ export default class Carousel extends Component {
           config={{ tension: 10, friction: 10 }}>
           {slides.map((slide, i) => styles => (
             <animated.div className={`slide slide_${i} ${i === active ? 'active' : ''}`} style={{ ...defaultStyles, ...styles }}>
-              <img src={`${slide.image.fields.file.url}?fl=progressive&w=${winWidth}&h=${winHeight}`} alt="" />
+              <img src={`${slide.image.fields.file.url}`} alt="" />
               <div className="overlay" />
             </animated.div>
           ))}
