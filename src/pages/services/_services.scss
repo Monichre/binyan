@@ -10,6 +10,8 @@
     }
   }
   .main_content {
+    height: 100%;
+    position: relative;
     .headers {
       padding: 20px;
       h2, h3 {
@@ -23,12 +25,15 @@
       }
     }
     .content {
-      padding: 0 50px 50px;
+      height: 100%;
+      padding: 0 50px;
       display: block;
       margin: auto;
       div {
         display: flex;
         justify-content: space-evenly;
+        height: 100%;
+        margin-bottom: 150px;
 
         ul {
           padding: 20px;

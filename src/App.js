@@ -64,7 +64,7 @@ class App extends Component {
     } else {
       return (
         <BrowserRouter>
-          <div>
+          <div style={{position: 'relative'}}>
             <Helmet>
               <script
                 defer
