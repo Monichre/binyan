@@ -14,15 +14,15 @@
       object-position: center;
     }
   }
-  .main_content.content {
+  .content {
     width: 50%;
     display: block;
     margin: auto;
-    div {
-      margin: 40px auto 0;
-    }
     h2 {
       text-transform: uppercase;
+    }
+    div {
+      margin: 40px auto 0;
     }
     p {
       color: gray;
@@ -30,18 +30,19 @@
       line-height: 2;
     }
   }
+  .main_content.content {
+   
+  }
 
   .cities_content.content {
     padding-bottom: 40px;
+    width: 100%;
     div {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 50px 100px;
 
-      h2 {
-        text-transform: uppercase;
-      }
       p {
         color: black;
       }
@@ -61,6 +62,39 @@
         }
       }
     }
+  }
+  .careers.content {
+    padding-bottom: 40px;
+    h2, h3, p {
+      text-align: center;
+    }
+    h2 {
+      position: relative;
+      width: max-content;
+      display: block;
+      margin: auto;
+    }
+    h2::before {
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: black;
+      top: -80px;
+    }
+    h3 {
+      font-style: italic;
+    }
+   .contact_link {
+     display: block;
+     margin: auto; 
+     text-decoration: none;
+     color: inherit;
+     font-size: 14px;
+     font-style: italic;
+     text-align: center!important;
+     margin: 30px;
+   }
   }
   .team {
     position: relative;

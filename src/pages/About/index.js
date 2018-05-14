@@ -14,8 +14,6 @@ export default class About extends Component {
     const {employees} = AppStore.data
     const { About } = AppStore.data.pages
     console.log(About)
-    console.log(this.props)
-    console.log(employees)
     return(
       <div className="About">
         <GeneralHeader />
@@ -32,6 +30,10 @@ export default class About extends Component {
         <Team employees={employees} />
         <div className="cities_content content">
           <ReactMarkdown source={About.citiesContent} />
+        </div>
+        <div className="careers content">
+          <ReactMarkdown source={About.careers} />
+          <a className="contact_link" href=".contact">Contact Us</a>
         </div>
       </div>
     )
