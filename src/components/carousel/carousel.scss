@@ -5,8 +5,10 @@
 
    .carousel {
     height: 100vh;
+    max-height: 100vh;
     width: 100%;
     position: relative;
+    overflow: hidden!important;
 
     .overlay {
       position: absolute;
@@ -16,32 +18,39 @@
       width: 100%;
       background-color: rgba(0,0,0,0.3);
     }
-    div {
+    .slide {
       height: 100%;
-      .slider {
+      width: 100%!important;
+      position: absolute;
+      left: 0;
+      top: 0;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 0;
+      transition: all .9s ease-in-out;
+      img {
+        object-fit: cover;
+        object-position: center;
+        opacity: 0;
+        transition: all .9s ease-in-out;
         height: 100%;
-        .hero_slide {
-          height: 100%;
-          width: 100%!important;
-          position: absolute;
-          left: 0;
-          top: 0;
-          visibility: hidden;
-          opacity: 0;
-          z-index: 0;
+        width: 100%;
+      }
+
+      &.active {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1;
+        img {
+          object-fit: cover;
+          object-position: center;
+          opacity: 1;
           transition: all .7s ease-in-out;
-          &.active {
-            visibility: visible;
-            opacity: 1;
-            z-index: 1;
-          }
-          img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-          }
+          height: 100%;
+          width: 100%;
         }
       }
+     
     }
   }
   
