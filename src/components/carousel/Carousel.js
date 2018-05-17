@@ -68,11 +68,11 @@ export default class Carousel extends Component {
     const { active } = this.state
 
     const isVideoOrImage = slide =>
-    slide.project.featuredImage.fields.file.url.includes('mp4') ||
-    slide.project.featuredImage.fields.file.url.includes('video') ? (
+    slide.image.fields.file.url.includes('mp4') ||
+    slide.image.fields.file.url.includes('video') ? (
       <ReactPlayer
         className="gallery_video"
-        url={slide.project.featuredImage.fields.file.url}
+        url={slide.image.fields.file.url}
         playing
         loop={true}
         muted
@@ -80,7 +80,7 @@ export default class Carousel extends Component {
         width="100%"
       />
     ) : (
-      <img src={slide.project.featuredImage.fields.file.url} alt={slide.project.title + ' ' + slide.project.architect} />
+      <img src={slide.image.fields.file.url} alt={slide.project.title + ' ' + slide.project.architect} />
     )
     console.log(slides)
     const defaultStyles = { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }
