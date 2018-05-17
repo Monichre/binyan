@@ -44,7 +44,7 @@ export default class Gallery2 extends Component {
       }
       return a
     }
-    const gallery = shuffle(projects)
+    // const gallery = shuffle(projects)
 
     return (
       <div className="Gallery2">
@@ -58,7 +58,7 @@ export default class Gallery2 extends Component {
           </ul>
         </nav>
         <div className="gallery_photo_gallery">
-          {gallery.map(project => (
+          {projects.map(project => (
             <div className="grid_item">
               {isVideoOrImage(project)}
               <a className="overlay" href={`/projects/${project.slug}`}>

@@ -61,7 +61,10 @@ export const getCMS = async () => {
         )
 
         const heroImages = _.filter(items, item => item.sys.contentType.sys.id === 'heroImage').map(
-          image => (image = { ...image.fields })
+          image => {
+            image.fields.project = {...image.fields.project.fields }
+            return image = { ...image.fields }
+          } 
         )
 
         AppStore.data.siteNav = sortedNav

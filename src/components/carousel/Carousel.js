@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactSwipe from 'react-swipe'
 import { Transition, animated } from 'react-spring'
+
 import './carousel.scss'
 
 const Nav = props => (
@@ -11,7 +12,6 @@ const Nav = props => (
           <li key={`carousel_slide_${i}`}>
             <a href="#" data-number={i} onClick={props.handleClick.bind(this, i)}>
               <span className="dot" />
-              <span className="label">{slide.title}</span>
             </a>
           </li>
         )
@@ -41,9 +41,8 @@ export default class Carousel extends Component {
   componentDidMount() {
     console.log(this)
     const htmlSlides = document.querySelectorAll('.slide')
-    
+
     this.imageRotation()
-    
   }
 
   imageRotation = () => {
@@ -51,22 +50,20 @@ export default class Carousel extends Component {
     setInterval(() => {
       const cycle = () => {
         let next = this.current
-        console.log(next)
         next++
-        if (next >= slides.length ) {
+        if (next >= slides.length) {
           next = 0
         }
-        console.log(next)
         return next
       }
       this.current = cycle()
-      this.setState({active: this.current})
+      this.setState({ active: this.current })
     }, 5000)
   }
   render() {
     const { slides } = this.props
-    const {active} = this.state
-    console.log(this.current)
+    const { active } = this.state
+    console.log(slides)
     const defaultStyles = { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }
     const winHeight = window.outerHeight
     const winWidth = window.outerWidth
@@ -76,14 +73,22 @@ export default class Carousel extends Component {
         <Transition
           native
           keys={[...slides]}
-          from={{ opacity: 0 }}
+          from={{ opacity: 0.3 }}
           enter={{ opacity: 1 }}
           leave={{ opacity: 0.3 }}
-          config={{ tension: 10, friction: 10 }}>
+          config={{ tension: 3, friction: 7, delay: 200, duration: 1000, easing: 'ease-in-out' }}>
           {slides.map((slide, i) => styles => (
-            <animated.div className={`slide slide_${i} ${i === active ? 'active' : ''}`} style={{ ...defaultStyles, ...styles }}>
+            <animated.div
+              className={`slide slide_${i} ${i === active ? 'active' : ''}`}
+              style={{ ...defaultStyles, ...styles }}>
               <img src={`${slide.image.fields.file.url}`} alt="" />
               <div className="overlay" />
+              <div className="slide_info">
+                <p>
+                  {slide.project.title}, {slide.project.city}
+                </p>
+                <p>{slide.project.architect}</p>
+              </div>
             </animated.div>
           ))}
         </Transition>

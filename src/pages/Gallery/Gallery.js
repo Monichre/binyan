@@ -13,10 +13,25 @@ export default class Gallery extends Component {
     this.state = {}
   }
 
+  componentDidMount() {
+    const galleryDiv = document.querySelector('.gallery_photo_gallery')
+    const gridItems = document.querySelectorAll('.grid_item')
+    const { projects } = AppStore.data
+    this.analyzeComponentHeight(galleryDiv, gridItems)
+  }
+
+  analyzeComponentHeight = (galleryDiv, gridItems) => {
+    const containerHeight = galleryDiv.clientHeight - 100
+    let totalElementsHeight = 0
+    gridItems.forEach((item) => totalElementsHeight += item.offsetHeight)
+    let heights = []
+    console.log(containerHeight)
+    console.log(totalElementsHeight)
+  }
+
   render() {
     const { projects } = AppStore.data
-    console.log(projects)
-    
+
     const isVideoOrImage = project =>
       project.featuredImage.fields.file.url.includes('mp4') ||
       project.featuredImage.fields.file.url.includes('video') ? (
@@ -32,6 +47,7 @@ export default class Gallery extends Component {
       ) : (
         <img src={project.featuredImage.fields.file.url + '?fl=progressive&w=500&h=800'} alt={project.title + ' ' + project.architect} />
       )
+
     const shuffle = a => {
       let j
       let x
@@ -44,7 +60,7 @@ export default class Gallery extends Component {
       }
       return a
     }
-    const gallery = shuffle(projects)
+    // const gallery = shuffle(projects)
 
     return (
       <div className="Gallery">
@@ -59,7 +75,7 @@ export default class Gallery extends Component {
           </ul>
         </nav>
         <div className="gallery_photo_gallery">
-          {gallery.map(project => (
+          {projects.map(project => (
             <div className="grid_item">
               {isVideoOrImage(project)}
               <a className="overlay" href={`/projects/${project.slug}`}>
