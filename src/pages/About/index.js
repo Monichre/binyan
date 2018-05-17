@@ -33,7 +33,7 @@ export default class About extends Component {
         </div>
         <div className="careers content">
           <ReactMarkdown source={About.careers} />
-          <a className="contact_link" href=".contact">Contact Us</a>
+          <a className="contact_link" href="/contact">Contact Us</a>
         </div>
       </div>
     )
