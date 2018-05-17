@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactSwipe from 'react-swipe'
+import ReactPlayer from 'react-player'
 import { Transition, animated } from 'react-spring'
 
 import './carousel.scss'
@@ -11,7 +12,7 @@ const Nav = props => (
         return (
           <li key={`carousel_slide_${i}`}>
             <a href="#" data-number={i} onClick={props.handleClick.bind(this, i)}>
-              <span className="dot" />
+              <span className={`dot ${i === props.active ? 'active' : ''}`} />
             </a>
           </li>
         )
@@ -30,7 +31,9 @@ export default class Carousel extends Component {
     this.current = 0
   }
   handleNavClick = (i, e) => {
-    this.current = i
+    this.setState({
+      active: i
+    })
   }
   componentWillMount() {
     const { slides } = this.props
@@ -63,6 +66,22 @@ export default class Carousel extends Component {
   render() {
     const { slides } = this.props
     const { active } = this.state
+
+    const isVideoOrImage = slide =>
+    slide.project.featuredImage.fields.file.url.includes('mp4') ||
+    slide.project.featuredImage.fields.file.url.includes('video') ? (
+      <ReactPlayer
+        className="gallery_video"
+        url={slide.project.featuredImage.fields.file.url}
+        playing
+        loop={true}
+        muted
+        height="100%"
+        width="100%"
+      />
+    ) : (
+      <img src={slide.project.featuredImage.fields.file.url} alt={slide.project.title + ' ' + slide.project.architect} />
+    )
     console.log(slides)
     const defaultStyles = { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }
     const winHeight = window.outerHeight
@@ -81,7 +100,7 @@ export default class Carousel extends Component {
             <animated.div
               className={`slide slide_${i} ${i === active ? 'active' : ''}`}
               style={{ ...defaultStyles, ...styles }}>
-              <img src={`${slide.image.fields.file.url}`} alt="" />
+              {isVideoOrImage(slide)}
               <div className="overlay" />
               <div className="slide_info">
                 <p>
@@ -92,7 +111,7 @@ export default class Carousel extends Component {
             </animated.div>
           ))}
         </Transition>
-        <Nav handleClick={this.handleNavClick} slides={slides} />
+        <Nav handleClick={this.handleNavClick} active={active} slides={slides} />
       </div>
     )
   }

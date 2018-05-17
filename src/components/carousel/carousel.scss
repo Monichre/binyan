@@ -28,6 +28,7 @@
       opacity: 0;
       z-index: 0;
       transition: all 1s ease-in-out;
+
       .slide_info {
         position: absolute;
         left: 0;
@@ -36,12 +37,14 @@
         color: white;
         width: auto;
         height: auto; 
-        padding: 100px;
+        padding: 50px;
         opacity: 0;
         transition: all 1s;
 
         p {
           color: white;
+          font-size: 15px;
+          font-weight: 300;
         }
       }
       img {
@@ -115,10 +118,16 @@
             -ms-transform: scale(0.6);
             -o-transform: scale(0.6);
             transform: scale(0.6);
-          }
-          span::after {
 
+            &.active {
+              -webkit-transform: scale(1);
+              -moz-transform: scale(1);
+              -ms-transform: scale(1);
+              -o-transform: scale(1);
+              transform: scale(1);
+            }
           }
+        
           &:hover span {
             -webkit-transform: scale(1);
             -moz-transform: scale(1);
@@ -154,8 +163,8 @@
   position: relative;
   /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
   top: 8px;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   background-color: #383838;
   -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
@@ -166,6 +175,11 @@
   -ms-transform-origin: 50% 50%;
   -o-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+}
+#carousel_navigation .dot.active {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
 }
 
 #carousel_navigation .label {

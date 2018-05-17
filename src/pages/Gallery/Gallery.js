@@ -15,9 +15,6 @@ export default class Gallery extends Component {
 
   componentDidMount() {
     const galleryDiv = document.querySelector('.gallery_photo_gallery')
-    console.log(galleryDiv)
-    // console.log(galleryDiv.style)
-    console.log(window.getComputedStyle(galleryDiv))
     const gridItems = document.querySelectorAll('.grid_item')
     const { projects } = AppStore.data
     this.analyzeComponentHeight(galleryDiv, gridItems)
