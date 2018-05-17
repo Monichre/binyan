@@ -7,7 +7,7 @@ export const getCMS = async () => {
     ? JSON.parse(localStorage.getItem('localDataStore'))
     : false
 
-  // if (localDataStore === false) {
+  if (localDataStore === false) {
     const CMS_CLIENT = Contentful.createClient({
       space: process.env.REACT_APP_SPACE_ID,
       accessToken: process.env.REACT_APP_ACCESS_TOKEN
@@ -78,10 +78,10 @@ export const getCMS = async () => {
       .catch(error => {
         console.log(error)
       })
-  // } else {
+  } else {
     AppStore.data = { ...localDataStore }
     AppStore.emitChange()
-  // }
+  }
 }
 
 export const getProjectData = slug => {
