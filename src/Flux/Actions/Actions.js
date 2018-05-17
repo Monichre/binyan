@@ -26,15 +26,12 @@ export const getCMS = async () => {
         const pages = _.filter(items, item => item.sys.contentType.sys.id.includes('Page')).map(
           item => (item = { ...item.fields })
         )
-
         const socialMediaLinks = _.filter(items, item => item.sys.contentType.sys.id === 'socialMediaLink').map(
           item => (item = { ...item.fields })
         )
-
         const cities = _.filter(items, item => item.sys.contentType.sys.id === 'city').map(
           item => (item = { ...item.fields })
         )
-
         const nav = _.filter(pages, page => page.title !== 'Home').map(page => page.title)
         const sortedNav = []
 
@@ -53,20 +50,16 @@ export const getCMS = async () => {
         const projects = _.filter(items, item => item.sys.contentType.sys.id === 'project').map(
           project => (project = { ...project.fields })
         )
-
         const featuredProjects = _.filter(projects, project => project.featured)
-
         const press = _.filter(items, item => item.sys.contentType.sys.id === 'pressItem').map(
           pressItem => (pressItem = { ...pressItem.fields })
         )
-
         const heroImages = _.filter(items, item => item.sys.contentType.sys.id === 'heroImage').map(
           image => {
             image.fields.project = {...image.fields.project.fields }
             return image = { ...image.fields }
           } 
         )
-
         AppStore.data.siteNav = sortedNav
         AppStore.data.employees = employees
         AppStore.data.socialMediaLinks = socialMediaLinks
