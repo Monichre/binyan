@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import ReactMarkdown from 'react-markdown'
-import Team from './Team'
+import Team from './team/team'
 import GeneralHeader from '../../components/header/Header'
 import './about.scss'
 

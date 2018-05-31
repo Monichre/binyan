@@ -79,9 +79,7 @@ export default class Carousel extends Component {
         height="100%"
         width="100%"
       />
-    ) : (
-      <img src={slide.image.fields.file.url} alt={slide.project.title + ' ' + slide.project.architect} />
-    )
+    ) : null
     console.log(slides)
     const defaultStyles = { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }
     const winHeight = window.outerHeight
@@ -99,7 +97,7 @@ export default class Carousel extends Component {
           {slides.map((slide, i) => styles => (
             <animated.div
               className={`slide slide_${i} ${i === active ? 'active' : ''}`}
-              style={{ ...defaultStyles, ...styles }}>
+              style={{ ...defaultStyles, backgroundImage: `url(${slide.image.fields.file.url.includes('mp4') ? null : slide.image.fields.file.url + '?fm=jpg&fl=progressive'})`}}>
               {isVideoOrImage(slide)}
               <div className="overlay" />
               <div className="slide_info">

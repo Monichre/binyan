@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { CSSTransitionGroup } from 'react-transition-group'
+
 import _ from 'lodash'
-import Swiper from 'react-id-swiper'
+// import Swiper from 'react-id-swiper'
 import Letters from './letters'
+import './_team.scss'
 
 
 // const Letter = props => (

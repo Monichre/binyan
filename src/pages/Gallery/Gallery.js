@@ -16,22 +16,53 @@ export default class Gallery extends Component {
   componentDidMount() {
     const galleryDiv = document.querySelector('.gallery_photo_gallery')
     const gridItems = document.querySelectorAll('.grid_item')
+    const footer = document.querySelector('.Footer')
     const { projects } = AppStore.data
-    this.analyzeComponentHeight(galleryDiv, gridItems)
-  }
 
-  analyzeComponentHeight = (galleryDiv, gridItems) => {
+    this.analyzeComponentHeight(galleryDiv, gridItems, footer)
+  }
+  
+  distanceBetweenElements(elementOne, elementTwo) {
+    const y1 = elementOne.getBoundingClientRect().bottom
+    const y2 = elementTwo.getBoundingClientRect().top
+
+    let topPosElement1 = elementOne.getBoundingClientRect().top + window.scrollY
+    let leftPosElement1 = elementOne.getBoundingClientRect().left + window.scrollX
+    let topPosFooter = elementOne.getBoundingClientRect().top + window.scrollY
+    let leftPosFooter = elementOne.getBoundingClientRect().left + window.scrollX
+    let yDistance = topPosFooter - topPosElement1
+
+    console.log(`${elementOne.classList[1]}: ${topPosElement1}`)
+    console.log(topPosFooter)
+    console.log(`${elementOne.classList[1]} distance from footer: ${yDistance}`)
+
+    return yDistance
+  }
+  
+  analyzeComponentHeight = (galleryDiv, gridItems, footer) => {
     const containerHeight = galleryDiv.clientHeight - 100
-    let totalElementsHeight = 0
-    gridItems.forEach((item) => totalElementsHeight += item.offsetHeight)
-    let heights = []
-    console.log(containerHeight)
-    console.log(totalElementsHeight)
+    let totalElementsHeight = 0  
+    let elements = []
+
+    gridItems.forEach((item, i) =>  {
+      totalElementsHeight += item.clientHeight
+      item.classList.add(`grid_item_${i}`)
+      elements.push(
+        {
+          index: i,
+          height:item.offsetHeight, 
+          distanceFromFooter: this.distanceBetweenElements(item, footer)
+        }
+      )
+    })
+
+    const bottomItems = elements.sort((a, b) => a.distanceFromFooter - b.distanceFromFooter)
+    bottomItems.length = 3
+    console.log(bottomItems)
   }
 
   render() {
     const { projects } = AppStore.data
-
     const isVideoOrImage = project =>
       project.featuredImage.fields.file.url.includes('mp4') ||
       project.featuredImage.fields.file.url.includes('video') ? (

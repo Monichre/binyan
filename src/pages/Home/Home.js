@@ -45,7 +45,7 @@ export default class Home extends Component {
     const homePageLiStyle = {
       color: ' white',
       letterSpacing: ' 3px',
-      fontSize: ' 0.8rem',
+      fontSize: ' 0.7rem',
       paddingTop: ' 10px',
       textTransform: ' uppercase'
     }    
