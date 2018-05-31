@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-
+import {  GlitchWords, GridLetter, LetterGlitch } from '../../../components/letterGlitch/letterGlitch'
 import _ from 'lodash'
-// import Swiper from 'react-id-swiper'
 import Letters from './letters'
 import './_team.scss'
 
@@ -18,10 +17,17 @@ export default class Team extends Component {
     this.state = {
       letters: [],
       gridRow: 0,
-      gridHeight: 0
+      gridHeight: 0,
+      cities: [
+        'Melbourne',
+        'Brisbane',
+        'Sydney',
+        'New York'
+      ]
     }
   }
   componentDidMount() {
+    // Array.from(document.querySelectorAll('.word')).forEach((word) => new Word(word));
     const { letters } = this.state
     const { employees } = this.props
     const grid = document.querySelector('.letter-grid')
