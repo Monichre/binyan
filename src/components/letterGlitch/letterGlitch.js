@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import ImagesLoaded from 'react-images-loaded'
 const charming = require('charming')
 
@@ -101,7 +100,6 @@ class GridLetter {
     this.DOM.letter = letter
     this.pos = pos
     this.imgs = letter.parentNode.getAttribute(`data-images-char-${this.pos + 1}`).split(',')
-    this.imgs.push(letter.parentNode.getAttribute(`data-image-death`))
     let htmlstr = ''
     for (const img of this.imgs) {
       htmlstr += `<img src="${img}"/>`
@@ -118,19 +116,17 @@ class GridLetter {
   initEvents() {
     this.mouseenterFn = () => {
       this.gfx.stop().slideshow()
-      document.body.style.backgroundColor = this.bgcolor
     }
     this.mouseleaveFn = () => {
       this.gfx.stopSlideshow()
       this.gfx.glitch()
-      document.body.style.backgroundColor = '#191a19'
     }
     this.DOM.letter.addEventListener('mouseenter', this.mouseenterFn)
     this.DOM.letter.addEventListener('mouseleave', this.mouseleaveFn)
   }
 }
 
-class GlitchWords {
+class Glitch {
   constructor(word) {
     this.DOM = {}
     this.DOM.word = word
@@ -142,8 +138,6 @@ class GlitchWords {
   }
 }
 
-module.exports = {
-  GlitchWords,
-  GridLetter,
-  LetterGlitch
-}
+export {Glitch }
+export { GridLetter }
+export { LetterGlitch }

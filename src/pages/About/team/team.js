@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import {  GlitchWords, GridLetter, LetterGlitch } from '../../../components/letterGlitch/letterGlitch'
 import _ from 'lodash'
 import Letters from './letters'
 import './_team.scss'
+const { Glitch } = require('../../../components/letterGlitch/letterGlitch')
+const { GridLetter } = require('../../../components/letterGlitch/letterGlitch')
+const { LetterGlitch } = require('../../../components/letterGlitch/letterGlitch')
 
-
+console.log(Glitch)
 // const Letter = props => (
 //     <div className={`letter ${props.animatedClass}`} key={props.key} onMouseEnter={props.hoverAnimation}>
 //       <span className="letter_char" id={props.key} >{props.letter}</span>
@@ -27,7 +29,6 @@ export default class Team extends Component {
     }
   }
   componentDidMount() {
-    // Array.from(document.querySelectorAll('.word')).forEach((word) => new Word(word));
     const { letters } = this.state
     const { employees } = this.props
     const grid = document.querySelector('.letter-grid')
@@ -36,24 +37,39 @@ export default class Team extends Component {
     window.addEventListener('resize', _.debounce(letterAnim.onResize, 100))
     const lettersMounted = document.querySelectorAll('.letter-grid.js-show-letters')
 
-    if(lettersMounted) {
+    if(lettersMounted && lettersMounted.length > 0) {
       const allLetters =  document.querySelectorAll('.letter-grid.js-show-letters div')
       this.injectCityName(allLetters)
       this.parseEachLetter(allLetters, employees)
+
+      Array.from(document.querySelectorAll('.employee_letter')).forEach((word) => new Glitch(word))
     }
 
   }
 
  
   parseEachLetter = (letters, employees) => {
-    letters.forEach(letterEl => {
-      console.log(letterEl)
-      letterEl.addEventListener('mouseover', () => {
-        this.employeePhotoFilter(letterEl, employees)
-      })
+    // This syntax allows the destructuring of the letters nodelist
+    const half = [...letters] 
+    console.log(half)
+    debugger
+    half.length = Math.floor([...letters].length / 2 )
+
+    half.forEach(letterEl => {
+      const rando = letters[Math.floor(Math.random()*letters.length)]
+      this.employeePhotoFilter(rando, employees)
     })
   }
-  
+
+  employeePhotoFilter = (el, employees) => {
+    el.classList.add('employee_letter')
+    employees.forEach((employee, i) => {
+      let imgAttr = `data-images-char-${i + 1}`
+      let imgAttrVal = `${employee.file.url}?w=100&h=100` 
+      el.setAttribute(imgAttr, imgAttrVal)
+    })
+    el.setAttribute('data-background-colors', "#f5a4bf,#336ff0,#ffea9e,#33beff,#a5d613,#f89a53")
+  }
 
   injectCityName = (allLetters) => {
     console.log(allLetters)
@@ -67,27 +83,6 @@ export default class Team extends Component {
     }
   }
 
-  employeePhotoFilter = (el, employees) => {
-    const letter = el.innerText
-    const matchEmployee = _.find(employees, employee => {
-      if (employee.title.split('')[0] === letter) {
-        console.log(employee)
-        return employee
-      }
-    })
-
-    if (matchEmployee) {
-      const img = document.createElement('img')
-      img.src = matchEmployee.file.url + '?w=100&h=100'
-      el.appendChild(img)
-      img.classList.add('active', 'animated', 'fadeInUp')
-      employees.splice(employees.indexOf(matchEmployee), 1)
-    }
-  }
-
-  handleHover = e => {
-    this.employeePhotoFilter(e.target)
-  }
   getGridHeight = (letterAnim) => {
     const gridHeight = letterAnim.getColumnHeight()
     console.log(gridHeight)
@@ -101,11 +96,7 @@ export default class Team extends Component {
 
 
   render() {
-    
-    
-    // const { alphaFull } = this
-    // const { letters } = this.state
-    // const characters = []
+ 
 
     return (
       <div className="team">
