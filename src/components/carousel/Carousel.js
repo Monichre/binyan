@@ -2,24 +2,8 @@ import React, { Component } from 'react'
 import ReactSwipe from 'react-swipe'
 import ReactPlayer from 'react-player'
 import { Transition, animated } from 'react-spring'
-
+import {CarouselNav} from './carouselNav'
 import './carousel.scss'
-
-const Nav = props => (
-  <nav id="carousel_navigation">
-    <ul>
-      {props.slides.map((slide, i) => {
-        return (
-          <li key={`carousel_slide_${i}`}>
-            <a href="#" data-number={i} onClick={props.handleClick.bind(this, i)}>
-              <span className={`dot ${i === props.active ? 'active' : ''}`} />
-            </a>
-          </li>
-        )
-      })}
-    </ul>
-  </nav>
-)
 
 export default class Carousel extends Component {
   constructor() {
@@ -89,7 +73,7 @@ export default class Carousel extends Component {
       <div className="carousel">
         <Transition
           native
-          keys={[...slides]}
+          keys={slides}
           from={{ opacity: 0.3 }}
           enter={{ opacity: 1 }}
           leave={{ opacity: 0.3 }}
@@ -109,7 +93,7 @@ export default class Carousel extends Component {
             </animated.div>
           ))}
         </Transition>
-        <Nav handleClick={this.handleNavClick} active={active} slides={slides} />
+        <CarouselNav handleClick={this.handleNavClick} active={active} slides={slides} />
       </div>
     )
   }

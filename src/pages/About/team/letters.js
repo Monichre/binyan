@@ -5,8 +5,8 @@ export default class Letters {
     this.grid = el
     this.gridWidth = 0
     this.gridHeight = 0
-    this.letterWidth = 30
-    this.letterHeight = 30
+    this.letterWidth = 40
+    this.letterHeight = 40
     this.totalLetters = 0
     this.letterArray = []
     this.currentLetters = 0

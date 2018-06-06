@@ -4,6 +4,7 @@ const charming = require('charming')
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+const getRelativeRandom = (items) => items[Math.floor(Math.random()*items.length)]
 
 class LetterGlitch {
   constructor(el, imgs) {
@@ -15,11 +16,11 @@ class LetterGlitch {
       // Max and Min values for the time when to start the effect.
       glitchStart: { min: 500, max: 4000 },
       // Max and Min values of time that an element keeps each state.
-      glitchState: { min: 50, max: 200 },
+      glitchState: { min: 2000, max: 5000 },
       // Number of times the glitch action is performed per iteration.
       glitchTotalIterations: 6,
       // The imgs slideshow interval.
-      slideshowInterval: 200
+      slideshowInterval: 3000
     }
   }
   glitch() {
@@ -43,7 +44,9 @@ class LetterGlitch {
             20
           )}px,0px) rotate3d(0,0,1,${getRandomInt(-3, 3)}deg)`
           if (getRandomInt(0, 3) < 2) {
+            console.log(this.DOM.el)
             this.DOM.el.style.backgroundImage = `url(${this.imgs[getRandomInt(0, this.totalImgs - 1)]})`
+            console.log(this.DOM.el.style.backgroundImage)
             this.DOM.el.style.color = 'transparent'
           } else {
             this.DOM.el.style.backgroundImage = 'none'
@@ -76,6 +79,8 @@ class LetterGlitch {
   changeImage(pos) {
     return new Promise((resolve, reject) => {
       this.DOM.el.style.color = 'transparent'
+      console.log(pos)
+      console.log(`url(${this.imgs[pos]})`)
       this.DOM.el.style.backgroundImage = `url(${this.imgs[pos]})`
       resolve()
     })
@@ -95,20 +100,22 @@ class LetterGlitch {
 }
 
 class GridLetter {
-  constructor(letter, pos) {
+  constructor(letter, pos, employees) {
     this.DOM = {}
     this.DOM.letter = letter
     this.pos = pos
-    this.imgs = letter.parentNode.getAttribute(`data-images-char-${this.pos + 1}`).split(',')
+    this.imgs = employees.map((employee, i) => this.DOM.letter.parentNode.getAttribute(`data-images-char-${i + 1}`).split(','))
     let htmlstr = ''
+    console.log(this.imgs)
     for (const img of this.imgs) {
       htmlstr += `<img src="${img}"/>`
+      console.log('html string', htmlstr)
     }
     const imgWrapper = document.createElement('div')
     imgWrapper.className = 'hidden'
     imgWrapper.innerHTML = htmlstr
     document.body.appendChild(imgWrapper)
-    this.bgcolor = letter.parentNode.dataset['backgroundColors'].split(',')[this.pos]
+    // this.bgcolor = letter.parentNode.dataset['backgroundColors'].split(',')[this.pos]
     this.gfx = new LetterGlitch(this.DOM.letter, this.imgs)
     this.gfx.glitch()
     this.initEvents()
@@ -127,14 +134,16 @@ class GridLetter {
 }
 
 class Glitch {
-  constructor(word) {
+  constructor(word, employees) {
     this.DOM = {}
     this.DOM.word = word
+    this.employees = employees
     this.layout()
   }
   layout() {
-    charming(this.DOM.word, { classPrefix: 'letter' })
-    Array.from(this.DOM.word.querySelectorAll('span')).forEach((letter, pos) => new GridLetter(letter, pos))
+    charming(this.DOM.word, { classPrefix: 'employee_letter' })
+    console.log(this.DOM.word)
+    Array.from(this.DOM.word.querySelectorAll('span')).forEach((letter, pos) => new GridLetter(letter, pos, this.employees))
   }
 }
 

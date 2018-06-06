@@ -82,7 +82,7 @@
         
         .slide_info {
           position: absolute;
-          left: 0;
+          left: 50px;
           bottom: 0;
           z-index: 10;
           color: white;
@@ -94,8 +94,9 @@
   
           p {
             color: white;
-            font-size: 15px;
-            font-weight: 300;
+            font-size: 13px;
+            font-size: uppercase;
+            font-weight: lighter!important;
           }
         }
         div {

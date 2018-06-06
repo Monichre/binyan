@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AppStore from '../../Flux/Store/AppStore'
 import { Link } from 'react-router-dom'
-import Carousel from '../../components/carousel/Carousel'
+import Carousel from '../../components/carousel/carousel'
 import { ProjectPreview } from '../Projects/ProjectPreview'
 import ReactMarkdown from 'react-markdown'
 import _ from 'lodash'

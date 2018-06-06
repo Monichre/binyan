@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import AppStore from './Flux/Store/AppStore'
-import Home from './pages/Home/Home'
+import Home from './pages/home/home'
 import About from './pages/About/index'
 import Contact from './pages/Contact/index'
 import Gallery from './pages/Gallery/Gallery'
